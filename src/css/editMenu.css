@@ -1,0 +1,31 @@
+/* ! Content start */
+
+.content-container .addPhoto {
+  padding-top: 25%;
+}
+.addFile input {
+  height: 60px;
+  background-color: #f8f9fa;
+  border-style: none;
+  outline: none;
+}
+.buttonUpdate .update {
+  /* font-family: "Poppins"; */
+  background-color: #efc81a;
+  color: #fff;
+  cursor: pointer;
+  height: 40px;
+  border-style: none;
+}
+.addIngredients textarea {
+  background-color: #f8f9fa;
+  border-style: none;
+  outline: none;
+}
+.category .selectCategory {
+  background-color: #f8f9fa;
+  border-style: none;
+  outline: none;
+}
+
+/* ! Content end */
