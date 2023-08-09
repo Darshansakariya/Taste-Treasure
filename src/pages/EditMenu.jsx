@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/editMenu.css";
 import NavBar from "../components/Navbar";
@@ -11,6 +11,7 @@ const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU";
 
 export default function EditMenu() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [img, setImg] = useState(null);
   const [updateData, setUpdateData] = useState({
@@ -32,10 +33,10 @@ export default function EditMenu() {
       .then((res) => {
         console.log(res);
         setUpdateData({
-          title: res.data.title,
-          ingredients: res.data.ingredients,
-          category_id: res.data.category_id,
-          img: res.data.img,
+          title: res.data.data.title,
+          ingredients: res.data.data.ingredients,
+          category_id: res.data.data.category_id,
+          img: res.data.data.img,
         });
       })
       .catch((err) => {
@@ -75,6 +76,7 @@ export default function EditMenu() {
       .then((res) => {
         console.log(res);
         alert("Updated successfully");
+        navigate("/profile");
       })
       .catch((err) => {
         console.log(err);
@@ -93,7 +95,7 @@ export default function EditMenu() {
     const image = document.createElement("img");
     image.src = URL.createObjectURL(fileInput.files[0]);
     imagePreview.appendChild(image);
-    imagePreview.style.display = "block";
+    // imagePreview.style.display = "block";
 
     setImg(fileInput.files[0]); // Update the image state
   };
@@ -175,7 +177,7 @@ export default function EditMenu() {
                 type="submit"
                 className="post btn w-50 rounded text-center mb-5"
               >
-                Post
+                Update
               </button>
             </div>
           </form>

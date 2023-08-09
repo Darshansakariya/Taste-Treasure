@@ -105,10 +105,10 @@ export default function Profile() {
 
       {/* <!-- TODO Tab section start --> */}
       <div className="tabs-wrapper container row ms-3 ps-5">
-        <ul className="nav nav-underline" id="recipesTab" role="tablist">
+        <ul className="nav nav-tabs border-0" id="recipesTab" role="tablist">
           <li className="nav-item">
             <a
-              className="titleTab nav-link active"
+              className="titleTab nav-link active border-0"
               id="recipes-tab"
               data-bs-toggle="tab"
               href="#recipes"
@@ -121,7 +121,7 @@ export default function Profile() {
           </li>
           <li className="nav-item">
             <a
-              className="titleTab nav-link"
+              className="titleTab nav-link border-0"
               id="bookmarked-tab"
               data-bs-toggle="tab"
               href="#bookmarked"
@@ -134,7 +134,7 @@ export default function Profile() {
           </li>
           <li className="nav-item">
             <a
-              className="titleTab nav-link"
+              className="titleTab nav-link border-0"
               id="liked-tab"
               data-bs-toggle="tab"
               href="#liked"

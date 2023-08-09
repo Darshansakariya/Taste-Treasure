@@ -60,7 +60,7 @@ const AddMenu = () => {
       });
       setImg(null);
       alert("Success");
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       console.error(error);
     }

@@ -20,10 +20,11 @@
 }
 /* ! Content start */
 
-.nav-underline .nav-link {
+.titleTab .nav-link {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 500;
   color: #c4c4c4;
   background-color: #fff;
   border: #fff;
