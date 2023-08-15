@@ -1,0 +1,85 @@
+.regis {
+  /* background-color: darkseagreen; */
+  height: 100vh;
+}
+
+.regis h3 {
+  font-family: "Poppins";
+  color: #efc81a;
+  text-align: center;
+}
+.regis p {
+  font-family: "Poppins";
+  color: #8692a6;
+  text-align: center;
+}
+
+.content {
+  background-color: coralBlue;
+  justify-content: center;
+  align-items: center;
+}
+
+.content hr {
+  width: 427px;
+  top: 520px;
+  left: 747px;
+}
+
+.content .formReg {
+  /* background-color: burlywood; */
+  width: 30%;
+}
+.forgotPass {
+  font-size: 12px;
+}
+.forgotPass .link {
+  text-decoration: none;
+}
+
+.account .link {
+  text-decoration: none;
+}
+#name:focus {
+  outline: none;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+  border-color: #efc81a;
+}
+#email:focus {
+  outline: none;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+  border-color: #efc81a;
+}
+#pass:focus {
+  outline: none;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+  border-color: #efc81a;
+}
+.buttonRegis:hover {
+  background-color: #fff;
+  color: #efc81a;
+  border: 1px solid #efc81a;
+}
+
+span a {
+  color: #efc81a;
+}
+::placeholder {
+  font-size: 12px;
+}
+.modal-body {
+  color: #efc81a;
+}
+.modal-body .sub {
+  color: #8692a6;
+}
+.verif:hover {
+  background-color: #fff;
+  color: #efc81a;
+  border: 1px solid #efc81a;
+}
+.activated:hover {
+  background-color: #fff;
+  color: #efc81a;
+  border: 1px solid #efc81a;
+}

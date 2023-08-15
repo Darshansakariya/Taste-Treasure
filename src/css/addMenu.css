@@ -1,10 +1,11 @@
-.container-content {
-  margin-top: 5rem;
+#content {
+  margin-top: 6rem;
 }
 
 .custom-button,
 .custom-button2,
 .modal-body .cancelLogout {
+  font-family: 'Poppins'
   background-color: #efc81a;
   color: #fff;
   border: none;

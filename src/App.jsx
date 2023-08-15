@@ -8,6 +8,12 @@ import Home from "./pages/Home";
 import AddMenu from "./pages/AddMenu";
 import Profile from "./pages/Profile";
 import EditMenu from "./pages/EditMenu";
+import SearchMenu from "./pages/SearchMenu";
+import Login from "./auth/login";
+import Register from "./auth/registration";
+import ForgotPassword from "./auth/forgot";
+import Change from "./auth/change";
+import DetailMenu from "./pages/DetailMenu";
 
 function App() {
   return (
@@ -17,7 +23,12 @@ function App() {
         <Route path="/addMenu" element={<AddMenu />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/editMenu/:id" element={<EditMenu />} />
-        {/* <Route path="/menu" component={SearchMenu} /> */}
+        <Route path="/search" element={<SearchMenu />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot" element={<ForgotPassword />} />
+        <Route path="/change" element={<Change />} />
+        <Route path="/menu/:id" element={<DetailMenu />} />
       </Routes>
     </Router>
   );

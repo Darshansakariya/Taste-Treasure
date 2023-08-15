@@ -1,4 +1,4 @@
-import Navbar from "../componentsCSS/Navbar.css";
+import Navbar from "./../componentsCSS/Navbar.css";
 
 const SideBlock = () => {
   return (

@@ -1,0 +1,84 @@
+* {
+  font-family: "Poppins";
+}
+
+.content {
+  margin-top: 2rem;
+}
+.postHeader {
+  margin-top: 8rem;
+}
+
+/* ! Content start */
+.postHeader img {
+  width: 40px;
+  height: 35px;
+}
+
+.content-container h1 {
+  color: #2e266f;
+}
+.addFile input {
+  height: 60px;
+  background-color: #f8f9fa;
+  border-style: none;
+  outline: none;
+}
+.ingredients {
+  padding-left: 20%;
+}
+.addIngredients textarea {
+  background-color: #f8f9fa;
+  border-style: none;
+  outline: none;
+}
+.booklike .book {
+  background-color: #efc81a;
+  height: 34px;
+  width: 34px;
+}
+.book img {
+  padding-right: 50%;
+  height: 24px;
+  width: 24px;
+}
+.booklike .like {
+  background-color: #fff;
+  height: 34px;
+  width: 34px;
+  border: 1px solid #efc81a;
+}
+.like img {
+  padding-right: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.bar {
+  width: 95%;
+  height: 2px;
+  border: none;
+  background: #efc81a;
+}
+
+.comment-section textarea {
+  background-color: #f8f9fa;
+  border-style: none;
+  outline: none;
+  width: 40%;
+}
+.comment-section button {
+  background-color: #efc81a;
+  border-style: none;
+  outline: none;
+}
+/* ! comment content start */
+
+.comment-content img {
+  height: 45px;
+  width: 45px;
+}
+
+/* ! comment content end */
+
+/* ! Content end */

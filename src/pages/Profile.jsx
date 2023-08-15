@@ -8,6 +8,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Resp from "../components/Resp";
 import Alert from "./../components/Alert";
+import Footer from "../components/Footer";
 
 export default function Profile() {
   const token =
@@ -281,6 +282,7 @@ export default function Profile() {
         </div>
       </div>
       {/* <!-- TODO Tab section end --> */}
+      <Footer />
     </>
   );
 }

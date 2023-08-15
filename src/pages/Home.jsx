@@ -2,14 +2,24 @@
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 // import React from "react";
-import "../css/home.css";
-import discoverImage from "../assets/discover.png";
-import fypImage from "../assets/fyp.png";
-import newRecipeImage from "../assets/newRecipe.png";
-import NavBar from "../components/Navbar";
-import SideBlock from "../components/SideBlock";
+import "./../css/home.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setDiscoverInput } from "./../features/home";
+import discoverImage from "./../assets/discover.png";
+import fypImage from "./../assets/fyp.png";
+import newRecipeImage from "./../assets/newRecipe.png";
+import NavBar from "./../components/Navbar";
+import SideBlock from "./../components/SideBlock";
+import Footer from "./../components/Footer";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const discoverInput = useSelector((state) => state.home.discoverInput);
+
+  const handleDiscoverInput = (event) => {
+    dispatch(setDiscoverInput(event.target.value));
+  };
+
   return (
     <>
       <div className="primaryContainer container-fluid">
@@ -29,6 +39,8 @@ export default function Home() {
                   type="text"
                   className="search rounded-3 border-0"
                   placeholder="Search Restaurant, Food"
+                  value={discoverInput}
+                  onChange={handleDiscoverInput}
                 />
               </div>
 
@@ -197,6 +209,7 @@ export default function Home() {
         </section>
         {/* <!-- TODO Section Top end --> */}
       </div>
+      <Footer />
     </>
   );
 }

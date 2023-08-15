@@ -1,21 +1,25 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSelectedImage,
+  setInputValue,
+  setImg,
+  resetInput,
+} from "../features/addMenu";
 import NavBar from "../components/Navbar";
 import "../css/addMenu.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const AddMenu = () => {
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState(null);
   const previewContainerRef = useRef(null);
-  const [img, setImg] = useState(null);
-  const [input, setInput] = useState({
-    title: "",
-    ingredients: "",
-    category_id: "0",
-    img: "",
-  });
+  const dispatch = useDispatch();
+  const selectedImage = useSelector((state) => state.addMenu.selectedImage);
+  const img = useSelector((state) => state.addMenu.img);
+  const input = useSelector((state) => state.addMenu.input);
 
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU"; // Replace with your actual access token
@@ -28,7 +32,7 @@ const AddMenu = () => {
       !input.title ||
       !input.ingredients ||
       input.category_id === "0" ||
-      !img
+      !input.img
     ) {
       alert("Please fill the form correctly");
       return;
@@ -38,7 +42,7 @@ const AddMenu = () => {
     bodyFormData.append("title", input.title);
     bodyFormData.append("ingredients", input.ingredients);
     bodyFormData.append("category_id", input.category_id);
-    bodyFormData.append("img", img);
+    bodyFormData.append("img", input.img);
 
     try {
       const response = await axios.post(
@@ -52,13 +56,7 @@ const AddMenu = () => {
         }
       );
       console.log(response);
-      setInput({
-        title: "",
-        ingredients: "",
-        category_id: "0",
-        img: "",
-      });
-      setImg(null);
+      dispatch(resetInput());
       alert("Success");
       navigate("/profile");
     } catch (error) {
@@ -71,23 +69,23 @@ const AddMenu = () => {
 
     if (file && file.type.startsWith("image/")) {
       const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
-      setImg(file);
+      dispatch(setSelectedImage(imageUrl));
       const imageElement = document.createElement("img");
       imageElement.classList.add("img-fluid");
       imageElement.src = imageUrl;
 
       previewContainerRef.current.innerHTML = "";
       previewContainerRef.current.appendChild(imageElement);
+      dispatch(setImg(file));
     } else {
-      setSelectedImage(null);
+      dispatch(setSelectedImage(null));
       previewContainerRef.current.innerHTML =
         "File yang diunggah harus berupa gambar.";
     }
   }
 
   const onChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    dispatch(setInputValue({ name: e.target.name, value: e.target.value }));
     console.log(input);
   };
 
@@ -95,10 +93,11 @@ const AddMenu = () => {
     <>
       <NavBar />
       <section
-        className="content container-content w-100 d-flex justify-content-center"
+        id="content"
+        className="d-flex justify-content-center"
         style={{ height: "100vh" }}
       >
-        <div className="content-container w-50 d-flex flex-column">
+        <div className="content-container w-50 h-50 d-flex flex-column">
           <form onSubmit={handlePost} className="addFile w-100 pt-3 rounded">
             <div className="addPhoto bg-light h-50 mb-2 mt-5 text-center rounded">
               <div className="upload-area">

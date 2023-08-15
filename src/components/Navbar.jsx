@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../componentsCSS/Navbar.css";
 import accImg from "../assets/iconComment.png";
+import LogoutModal from "./../components/LogoutModal";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activePage, setActivePage] = useState("");
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +31,11 @@ const Navbar = () => {
   const handleActivePage = (pageName) => {
     setActivePage(pageName);
   };
+  const handleLogout = () => {
+    console.log("Logout clicked!");
+    // Lakukan logika logout di sini
+    // Setelah logout, Anda dapat memanggil navigate("/login") untuk menuju halaman login
+  };
 
   const handleProfileClick = () => {
     console.log("Profile clicked!");
@@ -47,7 +54,7 @@ const Navbar = () => {
         activePage === "" ? "navbar-scrolled" : ""
       }`}
     >
-      <div className="containerNav container mt-3">
+      <div className="containerNav container mt-3 col-lg-11">
         <div className="burger">
           <button
             className="navbar-toggler"
@@ -105,7 +112,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div className="user d-flex justify-content-center align-items-center">
+        <div className="user d-flex justify-content-center align-items-center col-lg-1">
           <div className="photo me-4">
             <img
               src={accImg}
@@ -120,13 +127,19 @@ const Navbar = () => {
               <a
                 href="#"
                 className="text-dark"
-                data-bs-toggle="modal"
-                data-bs-target="#logoutModal"
+                onClick={() => setShowLogoutModal(true)}
               >
                 <strong>Logout</strong>
               </a>
             </p>
           </div>
+        </div>
+        <div>
+          <LogoutModal
+            show={showLogoutModal}
+            onHide={() => setShowLogoutModal(false)}
+            onLogout={handleLogout}
+          />
         </div>
       </div>
     </nav>

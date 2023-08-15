@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/editMenu.css";
 import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU";
@@ -183,6 +184,7 @@ export default function EditMenu() {
           </form>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
