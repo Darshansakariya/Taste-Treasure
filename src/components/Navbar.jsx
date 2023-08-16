@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "./../features/auth";
+import { useDispatch } from "react-redux";
 import "../componentsCSS/Navbar.css";
 import accImg from "../assets/iconComment.png";
 import LogoutModal from "./../components/LogoutModal";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [activePage, setActivePage] = useState("");
@@ -32,6 +35,13 @@ const Navbar = () => {
     setActivePage(pageName);
   };
   const handleLogout = () => {
+    localStorage.removeItem("token");
+
+    // Dispatch logout action
+    dispatch(logout());
+
+    // Navigate to login page
+    navigate("/login");
     console.log("Logout clicked!");
     // Lakukan logika logout di sini
     // Setelah logout, Anda dapat memanggil navigate("/login") untuk menuju halaman login
@@ -112,7 +122,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div className="user d-flex justify-content-center align-items-center col-lg-1">
+        <div className="user d-flex justify-content-center align-items-center col-lg-5">
           <div className="photo me-4">
             <img
               src={accImg}

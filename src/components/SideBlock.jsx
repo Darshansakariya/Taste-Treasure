@@ -1,9 +1,9 @@
-import Navbar from "./../componentsCSS/Navbar.css";
+import "./../componentsCSS/Navbar.css";
 
 const SideBlock = () => {
   return (
     <>
-      <div className={Navbar.sideBlock}></div>
+      <div className="sideBlock"></div>
     </>
   );
 };

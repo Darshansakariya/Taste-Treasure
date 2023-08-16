@@ -1,46 +1,45 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import accImg from "../assets/iconComment.png";
 import "../css/profile.css";
 import NavBar from "../components/Navbar";
-import axios from "axios";
 // import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import Resp from "../components/Resp";
 import Alert from "./../components/Alert";
 import Footer from "../components/Footer";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentPage, setData, deleteItem } from "../features/profile";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  const { data, currentPage, itemsPerPage, showAlert, alertData } = useSelector(
+    (state) => state.profile
+  );
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU";
-  const [data, setData] = useState([]);
-  //   const decodedToken = jwt_decode(token);
-  //   const usersId = decodedToken.id;
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertData, setAlertData] = useState({
-    type: "",
-    message: "",
-  });
 
-  const fetchRecipes = async () => {
+  const fetchProfileData = async () => {
     try {
       const response = await axios.get("http://localhost:3000/recipe", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
-      setData(response.data.data);
+      dispatch(setData(response.data.data));
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchRecipes();
+    fetchProfileData();
   }, []);
 
-  const deleteData = (id) => {
+  const handleDelete = (id) => {
     axios
       .delete(`http://localhost:3000/recipe/${id}`, {
         headers: {
@@ -48,28 +47,31 @@ export default function Profile() {
         },
       })
       .then(() => {
-        setAlertData({
-          ...alertData,
-          type: "success",
-          message: "Data deleted successfully",
-        });
-        setShowAlert(true);
-        fetchRecipes();
+        dispatch(deleteItem(id));
+        toast.success("Menu deleted successfully");
       })
-      .catch((err) => {
-        console.log(err);
-        setAlertData({
-          ...alertData,
-          type: "danger",
-          message: err.response.data.message,
-        });
-        setShowAlert(true);
+      .catch((error) => {
+        console.log(error);
+        toast.error("Delete Menu Failed");
       });
   };
+
+  const handleNextPage = () => {
+    dispatch(setCurrentPage(currentPage + 1));
+  };
+
+  const handlePrevPage = () => {
+    dispatch(setCurrentPage(currentPage - 1));
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsToShow = data.slice(startIndex, endIndex);
 
   return (
     <>
       <NavBar />
+      <ToastContainer />
       {/* <!-- TODO content section start--> */}
       <section className="container-content w-100 ">
         {showAlert && (
@@ -107,7 +109,7 @@ export default function Profile() {
       {/* <!-- TODO Tab section start --> */}
       <div className="tabs-wrapper container row ms-3 ps-5">
         <ul className="nav nav-tabs border-0" id="recipesTab" role="tablist">
-          <li className="nav-item">
+          <li className="nav-item" id="nav-item">
             <a
               className="titleTab nav-link active border-0"
               id="recipes-tab"
@@ -120,7 +122,7 @@ export default function Profile() {
               Recipes
             </a>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" id="nav-item">
             <a
               className="titleTab nav-link border-0"
               id="bookmarked-tab"
@@ -133,7 +135,7 @@ export default function Profile() {
               Bookmarked
             </a>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" id="nav-item">
             <a
               className="titleTab nav-link border-0"
               id="liked-tab"
@@ -160,7 +162,7 @@ export default function Profile() {
           >
             {/* <!-- TODO section content start --> */}
             <div className="container-fluid row">
-              {data?.map((item) => {
+              {itemsToShow.map((item) => {
                 return (
                   <>
                     <div className="content-wrapper row" key={item.id}>
@@ -186,7 +188,7 @@ export default function Profile() {
                           <div className="actions mt-4">
                             <button
                               className="btn-delete btn text-center pt-2 text-white"
-                              onClick={() => deleteData(item.id)}
+                              onClick={() => handleDelete(item.id)}
                             >
                               Delete Menu
                             </button>
@@ -197,18 +199,32 @@ export default function Profile() {
                   </>
                 );
               })}
-            </div>
-            {/* <!-- TODO section content end --> */}
-            {/* <!-- TODO pagination start --> */}
-            <div className="pagination container-fluid mt-5 d-flex justify-content-center align-items-center">
-              <div className="page-content d-flex align-items-baseline">
-                <h6 className="me-4">Show 1-5 From 20</h6>
-                <button className="next-btn btn btn-warning text-white">
-                  Next
-                </button>
+              <div className="pagination container-fluid mt-5 d-flex justify-content-center align-items-center">
+                <div className="page-content d-flex align-items-baseline gap-2">
+                  {currentPage > 1 && (
+                    <button
+                      className="page-prev btn btn-warning text-white"
+                      onClick={handlePrevPage}
+                    >
+                      Prev
+                    </button>
+                  )}
+                  <h6 className="ml-4">
+                    Show {startIndex + 1}-{Math.min(endIndex, data.length)} From{" "}
+                    {data.length}
+                  </h6>
+                  {endIndex < data.length && (
+                    <button
+                      className="page-next btn btn-warning text-white"
+                      onClick={handleNextPage}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-            {/* <!-- TODO pagination end -->  */}
+            {/* <!-- TODO section content end --> */}
           </div>
 
           {/* <!-- Konten Tab Bookmarked --> */}
@@ -246,7 +262,7 @@ export default function Profile() {
                           <div className="actions mt-4">
                             <button
                               className="btn-delete btn text-center pt-2 text-white"
-                              onClick={() => deleteData(item.id)}
+                              onClick={() => handleDelete(item.id)}
                             >
                               Delete Menu
                             </button>

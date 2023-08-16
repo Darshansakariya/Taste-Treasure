@@ -1,14 +1,28 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
+import { loginUser } from "./../features/auth";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [inputData, setInputData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleLogin = () => {
-    navigate("/");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await dispatch(loginUser(inputData));
+      navigate("/");
+    } catch (err) {
+      console.log("Oops :", err);
+    }
   };
 
   const handleRegister = () => {
@@ -18,6 +32,10 @@ export default function Login() {
   const handleForgot = () => {
     navigate("/forgot");
   };
+
+  const onChange = (e) => {
+    setInputData({ ...inputData, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <section className="regis container">
@@ -26,7 +44,7 @@ export default function Login() {
           <h3 className="mt-5">Let's Get Started !</h3>
           <p className="mb-2">Log in to your existing account</p>
           <hr className="w-60" />
-          <form className="formReg">
+          <form onSubmit={handleLogin} className="formReg">
             <div className="form-group">
               <label htmlFor="email" className="mb-1">
                 Email
@@ -35,7 +53,10 @@ export default function Login() {
                 type="text"
                 className="form-control"
                 id="email"
+                name="email"
                 placeholder="johndoe@gmail.com i.e"
+                value={inputData.email}
+                onChange={onChange}
                 required
               />
             </div>
@@ -47,7 +68,9 @@ export default function Login() {
                 type="password"
                 className="form-control"
                 id="pass"
-                placeholder=""
+                name="password"
+                value={inputData.password}
+                onChange={onChange}
                 required
               />
             </div>
@@ -67,7 +90,6 @@ export default function Login() {
             <button
               type="submit"
               className="buttonRegis btn-warning btn-md w-100 custom-button"
-              onClick={handleLogin}
             >
               Login
             </button>

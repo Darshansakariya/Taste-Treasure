@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   setSelectedImage,
   setInputValue,
@@ -56,11 +58,12 @@ const AddMenu = () => {
         }
       );
       console.log(response);
+      toast.success("Add Menu Successful");
       dispatch(resetInput());
-      alert("Success");
       navigate("/profile");
     } catch (error) {
       console.error(error);
+      toast.error("Add Menu Failed");
     }
   };
 
@@ -92,6 +95,7 @@ const AddMenu = () => {
   return (
     <>
       <NavBar />
+      <ToastContainer />
       <section
         id="content"
         className="d-flex justify-content-center"
