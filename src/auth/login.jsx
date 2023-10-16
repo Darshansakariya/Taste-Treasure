@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { loginUser } from "./../features/auth";
+import { loginUser } from "./../features/auth.jsx";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

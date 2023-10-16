@@ -24,18 +24,23 @@
 * {
   font-family: "Poppins";
 }
-.regis {
+html {
+  margin: 0;
+  padding: 0;
+  /* background-color: #efc81a; */
+}
+#login {
   /* background-color: darkseagreen; */
   height: 100vh;
 }
 
-.regis h3 {
+#login h3 {
   font-family: "Poppins";
   color: #efc81a;
   text-align: center;
 }
-.regis p {
-  font-family: "Poppins";
+#login p {
+  /* font-family: "Poppins"; */
   color: #8692a6;
   text-align: center;
 }

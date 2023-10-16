@@ -4,6 +4,8 @@
 // import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import AddMenu from "./pages/AddMenu";
 import Profile from "./pages/Profile";
@@ -17,20 +19,23 @@ import DetailMenu from "./pages/DetailMenu";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/addMenu" element={<AddMenu />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/editMenu/:id" element={<EditMenu />} />
-        <Route path="/search" element={<SearchMenu />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot" element={<ForgotPassword />} />
-        <Route path="/change" element={<Change />} />
-        <Route path="/menu/:id" element={<DetailMenu />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/addMenu" element={<AddMenu />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/editMenu/:id" element={<EditMenu />} />
+          <Route path="/search" element={<SearchMenu />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<ForgotPassword />} />
+          <Route path="/change" element={<Change />} />
+          <Route path="/menu/:id" element={<DetailMenu />} />
+        </Routes>
+      </Router>
+      <ToastContainer />
+    </div>
   );
 }
 
