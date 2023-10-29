@@ -6,6 +6,7 @@ import addMenuReducer from "./../features/addMenu";
 import authReducer from "./../features/auth";
 import profileReducer from "./../features/profile";
 import editMenuReducer from "./../features/editMenu";
+import loginReducer from "./../features/login";
 
 const middleware = [...getDefaultMiddleware(), thunk, logger];
 
@@ -16,6 +17,7 @@ const store = configureStore({
     auth: authReducer,
     profile: profileReducer,
     editMenu: editMenuReducer,
+    login: loginReducer,
   },
   middleware,
 });

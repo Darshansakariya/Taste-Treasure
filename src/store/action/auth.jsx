@@ -19,7 +19,9 @@ export const loginUser = (email, password) => async (dispatch) => {
       }
     );
 
-    dispatch(loginSuccess({ token: response.data.token }));
+    dispatch(
+      loginSuccess({ user: response.data.users, token: response.data.token })
+    );
 
     // Simpan token ke localStorage
     localStorage.setItem("token", response.data.token);

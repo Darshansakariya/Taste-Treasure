@@ -112,7 +112,7 @@ export default function Register() {
             </div>
             <button
               type="submit"
-              className="buttonRegis btn btn-md w-100 custom-button"
+              className="buttonRegis btn btn-md btn-warning w-100 custom-button"
               data-toggle="modal"
               data-target="#verifyModal"
               onClick={handleRegister}

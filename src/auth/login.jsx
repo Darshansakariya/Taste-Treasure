@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { loginUser } from "./../features/auth.jsx";
+import { login } from "./../store/action/login.jsx";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -12,13 +12,13 @@ export default function Login() {
   const dispatch = useDispatch();
   const [inputData, setInputData] = useState({
     email: "",
-    password: "",
+    pass: "",
   });
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(loginUser(inputData));
+      await dispatch(login(inputData));
       navigate("/");
     } catch (err) {
       console.log("Oops :", err);
@@ -68,8 +68,8 @@ export default function Login() {
                 type="password"
                 className="form-control"
                 id="pass"
-                name="password"
-                value={inputData.password}
+                name="pass"
+                value={inputData.pass}
                 onChange={onChange}
                 required
               />
