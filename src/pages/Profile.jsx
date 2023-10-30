@@ -19,16 +19,29 @@ export default function Profile() {
   const { data, currentPage, itemsPerPage, showAlert, alertData } = useSelector(
     (state) => state.profile
   );
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU";
 
   const fetchProfileData = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.log("Token not found in localStorage.");
+      return;
+    }
+
     try {
-      const response = await axios.get("http://localhost:3000/recipe", {
+      // Mendapatkan ID pengguna dari token (contoh: token memiliki properti 'id')
+      const tokenData = JSON.parse(atob(token.split(".")[1])); // Parse data token
+      const userId = tokenData.id;
+
+      // Menggantikan :id dalam URL dengan ID pengguna yang sesuai
+      const url = `https://kind-gray-hippopotamus-tie.cyclic.app/recipe/users/${userId}`;
+
+      const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+
       dispatch(setData(response.data.data));
     } catch (error) {
       console.log(error);
@@ -40,8 +53,15 @@ export default function Profile() {
   }, []);
 
   const handleDelete = (id) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      // Handle jika token tidak ditemukan
+      console.log("Token not found in localStorage.");
+      return;
+    }
     axios
-      .delete(`http://localhost:3000/recipe/${id}`, {
+      .delete(`https://kind-gray-hippopotamus-tie.cyclic.app/recipe/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

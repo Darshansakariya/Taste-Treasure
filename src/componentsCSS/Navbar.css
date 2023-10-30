@@ -24,3 +24,8 @@
 .containerNav {
   margin-bottom: 1rem;
 }
+
+.user .photo {
+  border-radius: 3px;
+  background-color: blue;
+}

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "./../features/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../componentsCSS/Navbar.css";
 import accImg from "../assets/iconComment.png";
 import LogoutModal from "./../components/LogoutModal";
@@ -13,6 +13,9 @@ const Navbar = () => {
   const location = useLocation();
   const [activePage, setActivePage] = useState("");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  // Menggunakan useSelector untuk mengambil informasi pengguna dari Redux store
+  const user = useSelector((state) => state.login.user);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,8 +46,6 @@ const Navbar = () => {
     // Navigate to login page
     navigate("/login");
     console.log("Logout clicked!");
-    // Lakukan logika logout di sini
-    // Setelah logout, Anda dapat memanggil navigate("/login") untuk menuju halaman login
   };
 
   const handleProfileClick = () => {
@@ -123,16 +124,29 @@ const Navbar = () => {
           </div>
         </div>
         <div className="user d-flex justify-content-center align-items-center col-lg-5">
-          <div className="photo me-4">
+          <div
+            className="photo me-4"
+            style={{
+              width: "40px", // Lebar div luar
+              height: "40px", // Tinggi div luar
+              overflow: "hidden", // Menghilangkan bagian gambar yang keluar dari lingkaran
+              borderRadius: "50%", // Membuat efek lingkaran
+            }}
+          >
             <img
-              src={accImg}
+              src={user?.photos || accImg}
               alt="Search"
               width="40"
+              height="40"
               onClick={handleProfileClick}
+              // style={{
+              //   borderRadius: "20%", // Menetapkan border-radius 50% untuk membuat gambar bulat
+              //   cursor: "pointer", // Menambahkan kursor pointer untuk menunjukkan bahwa gambar dapat diklik
+              // }}
             />
           </div>
           <div className="text">
-            <p className="mb-0">Ayudia</p>
+            <p className="mb-0">{user?.name || "Ayudia"}</p>
             <p className="mb-0">
               <a
                 href="#"
