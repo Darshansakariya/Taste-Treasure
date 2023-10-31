@@ -15,9 +15,6 @@ import {
   updateImg,
 } from "../features/editMenu";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU";
-
 export default function EditMenu() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,20 +22,26 @@ export default function EditMenu() {
   const editMenu = useSelector((state) => state.editMenu);
 
   const previewContainerRef = useRef(null);
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.log("Token not found in localStorage.");
+    return;
+  }
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/recipe/${id}`, {
+      .get(`https://kind-gray-hippopotamus-tie.cyclic.app/recipe/id/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => {
-        console.log(res);
-        dispatch(updateTitle(res.data.data.title));
-        dispatch(updateIngredients(res.data.data.ingredients));
-        dispatch(updateCategoryId(res.data.data.category_id));
-        dispatch(updateImg(res.data.data.img));
+      .then((response) => {
+        console.log("ini response data: ", response.data.data);
+        const firstItem = response.data.data[0];
+        dispatch(updateTitle(firstItem.title));
+        dispatch(updateIngredients(firstItem.ingredients));
+        dispatch(updateCategoryId(firstItem.category_id));
+        dispatch(updateImg(firstItem.img));
       })
       .catch((err) => {
         console.log(err);
@@ -68,12 +71,16 @@ export default function EditMenu() {
     }
 
     axios
-      .put(`http://localhost:3000/recipe/${id}`, bodyFormData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      .put(
+        `https://kind-gray-hippopotamus-tie.cyclic.app/recipe/${id}`,
+        bodyFormData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         alert("Updated successfully");
