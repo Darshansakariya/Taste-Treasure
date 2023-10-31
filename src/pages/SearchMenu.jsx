@@ -11,22 +11,32 @@ const SearchMenu = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU";
   const [data, setData] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [userMap, setUserMap] = useState({});
   const [searchKeyword, setSearchKeyword] = useState(""); // State untuk kata kunci pencarian
   const [searchResults, setSearchResults] = useState([]); // State untuk hasil pencarian
   const [totalPages, setTotalPages] = useState(0);
+  const token = localStorage.getItem("token");
+  // Pastikan token ada sebelum menggunakannya
+  if (token) {
+    // Lakukan apa yang Anda perlukan dengan token
+    console.log("Token:", token);
+  } else {
+    // Token tidak ditemukan di local storage, atasi sesuai kebutuhan Anda
+    console.log("Token tidak ditemukan di local storage");
+  }
 
   const fetchRecipes = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/recipe", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://kind-gray-hippopotamus-tie.cyclic.app/recipe",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const recipesData = response.data.data;
 
@@ -39,7 +49,7 @@ const SearchMenu = () => {
       const usersDataPromises = uniqueUsersIds.map(async (userId) => {
         try {
           const userResponse = await axios.get(
-            `http://localhost:3000/users/${userId}`,
+            `https://kind-gray-hippopotamus-tie.cyclic.app/users/${userId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -84,11 +94,14 @@ const SearchMenu = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/recipe", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://kind-gray-hippopotamus-tie.cyclic.app/recipe",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log(response);
 
       const searchData = response.data.data;
@@ -223,7 +236,7 @@ const SearchMenu = () => {
                         <Resp />
                         <div className="d-flex mt-4 align-items-center">
                           <div className="round-image">
-                            <img src={item.author_pic} alt="" />
+                            <img src={item.author_photos} alt="" />
                           </div>
                           <h6>{item.author}</h6>
                         </div>

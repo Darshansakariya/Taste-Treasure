@@ -8,7 +8,7 @@ const addMenuSlice = createSlice({
       title: "",
       ingredients: "",
       category_id: "0",
-      img: null,
+      // img: null,
     },
   },
   reducers: {

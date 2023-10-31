@@ -187,7 +187,12 @@ export default function Profile() {
                   <>
                     <div className="content-wrapper row" key={item.id}>
                       <div className="content col-lg-4 col-md-5 col-sm-7 mb-5">
-                        <img src={item.img} alt="Food Image" width={300} />
+                        <img
+                          src={item.img}
+                          alt="Food Image"
+                          width={300}
+                          height={200}
+                        />
                       </div>
                       <div className="content-title col-lg-8 col-md-7 col-sm-5">
                         <h5>{item.title}</h5>

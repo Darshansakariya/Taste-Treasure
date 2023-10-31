@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,28 +13,59 @@ import NavBar from "../components/Navbar";
 import "../css/addMenu.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 
 const AddMenu = () => {
   const navigate = useNavigate();
-  const previewContainerRef = useRef(null);
   const dispatch = useDispatch();
   const selectedImage = useSelector((state) => state.addMenu.selectedImage);
   const img = useSelector((state) => state.addMenu.img);
   const input = useSelector((state) => state.addMenu.input);
+  const [imgFile, setImgFile] = useState(null);
+  const previewContainerRef = useRef();
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywibmFtZSI6Im90bmllbCIsInJvbGUiOiJ1c2VycyIsImlhdCI6MTY5MTQxMTYwMX0.9gq3-EFXJLhZelTRV3H-WzsaEbaKUdec1m6YnHvuUiU"; // Replace with your actual access token
+  const token = localStorage.getItem("token");
+  // Pastikan token ada sebelum menggunakannya
+  if (token) {
+    // Lakukan apa yang Anda perlukan dengan token
+    console.log("Token:", token);
+  } else {
+    // Token tidak ditemukan di local storage, atasi sesuai kebutuhan Anda
+    console.log("Token tidak ditemukan di local storage");
+  }
+
+  function previewImage(e) {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const imageUrl = URL.createObjectURL(file);
+      dispatch(setSelectedImage(imageUrl));
+      setImgFile(file);
+      const imageElement = document.createElement("img");
+      imageElement.classList.add("img-fluid");
+      imageElement.src = imageUrl;
+      previewContainerRef.current.innerHTML = "";
+      previewContainerRef.current.appendChild(imageElement);
+    } else {
+      dispatch(setSelectedImage(null));
+      previewContainerRef.current.innerHTML =
+        "File yang diunggah harus berupa gambar.";
+    }
+  }
+
+  const onChange = (e) => {
+    dispatch(setInputValue({ name: e.target.name, value: e.target.value }));
+    console.log(input);
+  };
 
   const handlePost = async (event) => {
     event.preventDefault();
     console.log(input);
-    console.log(img);
+    console.log(imgFile);
     if (
       !input.title ||
       !input.ingredients ||
       input.category_id === "0" ||
-      !input.img
+      !imgFile
     ) {
       alert("Please fill the form correctly");
       return;
@@ -44,11 +75,11 @@ const AddMenu = () => {
     bodyFormData.append("title", input.title);
     bodyFormData.append("ingredients", input.ingredients);
     bodyFormData.append("category_id", input.category_id);
-    bodyFormData.append("img", input.img);
+    bodyFormData.append("img", imgFile);
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/recipe",
+        "https://kind-gray-hippopotamus-tie.cyclic.app/recipe",
         bodyFormData,
         {
           headers: {
@@ -60,36 +91,12 @@ const AddMenu = () => {
       console.log(response);
       toast.success("Add Menu Successful");
       dispatch(resetInput());
+      setImgFile(null);
       navigate("/profile");
     } catch (error) {
       console.error(error);
       toast.error("Add Menu Failed");
     }
-  };
-
-  function previewImage(e) {
-    const file = e.target.files[0];
-
-    if (file && file.type.startsWith("image/")) {
-      const imageUrl = URL.createObjectURL(file);
-      dispatch(setSelectedImage(imageUrl));
-      const imageElement = document.createElement("img");
-      imageElement.classList.add("img-fluid");
-      imageElement.src = imageUrl;
-
-      previewContainerRef.current.innerHTML = "";
-      previewContainerRef.current.appendChild(imageElement);
-      dispatch(setImg(file));
-    } else {
-      dispatch(setSelectedImage(null));
-      previewContainerRef.current.innerHTML =
-        "File yang diunggah harus berupa gambar.";
-    }
-  }
-
-  const onChange = (e) => {
-    dispatch(setInputValue({ name: e.target.name, value: e.target.value }));
-    console.log(input);
   };
 
   return (
