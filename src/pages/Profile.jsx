@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import accImg from "../assets/iconComment.png";
 import "../css/profile.css";
 import NavBar from "../components/Navbar";
 // import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 import Resp from "../components/Resp";
 import Alert from "./../components/Alert";
 import Footer from "../components/Footer";
@@ -16,9 +17,36 @@ import axios from "axios";
 
 export default function Profile() {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
   const { data, currentPage, itemsPerPage, showAlert, alertData } = useSelector(
     (state) => state.profile
   );
+  const { user } = useSelector((state) => state.login);
+  const isoDateString = useSelector((state) => state.login.user.created_at);
+  const date = new Date(isoDateString);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()]; // Ingat bahwa bulan dimulai dari 0
+  const year = date.getFullYear();
+
+  const formattedDate = `${day} ${month} ${year}`;
+  console.log(formattedDate);
 
   const fetchProfileData = async () => {
     const token = localStorage.getItem("token");
@@ -69,6 +97,7 @@ export default function Profile() {
       .then(() => {
         dispatch(deleteItem(id));
         toast.success("Menu deleted successfully");
+        setShowModal(false);
       })
       .catch((error) => {
         console.log(error);
@@ -102,13 +131,23 @@ export default function Profile() {
           {/* <!-- Left --> */}
           <div className="col-md-9 d-flex align-items-center ms-5">
             <div className="block mt-1 ms-3 me-3"></div>
-            <img src={accImg} alt="" className="mt-1 me-2" />
+            <img
+              style={{
+                width: "40px", // Lebar div luar
+                height: "40px", // Tinggi div luar
+                overflow: "hidden", // Menghilangkan bagian gambar yang keluar dari lingkaran
+                borderRadius: "50%", // Membuat efek lingkaran
+              }}
+              src={user.photos}
+              alt=""
+              className="mt-1 me-2"
+            />
             <div className="comment-user p-1">
               <div className="nameAcc">
-                <p className="mb-0">Ayudia</p>
+                <p className="mb-0">{user.name}</p>
               </div>
               <div className="logoutAcc">
-                <p className="font-weight-bold mb-0">10 Recipes</p>
+                <p className="font-weight-bold mb-0">{`${itemsToShow.length} Recipes`}</p>
               </div>
             </div>
           </div>
@@ -117,7 +156,7 @@ export default function Profile() {
           <div className="col-md-2 content pt-3 text-right">
             <div className="comment-user">
               <div className="date">
-                <p className="mb-0 font-weight-bold">21 February 2023</p>
+                <p className="mb-0 font-weight-bold">{formattedDate}</p>
               </div>
             </div>
           </div>
@@ -188,6 +227,9 @@ export default function Profile() {
                     <div className="content-wrapper row" key={item.id}>
                       <div className="content col-lg-4 col-md-5 col-sm-7 mb-5">
                         <img
+                          style={{
+                            borderRadius: 10,
+                          }}
                           src={item.img}
                           alt="Food Image"
                           width={300}
@@ -213,10 +255,44 @@ export default function Profile() {
                           <div className="actions mt-4">
                             <button
                               className="btn-delete btn text-center pt-2 text-white"
-                              onClick={() => handleDelete(item.id)}
+                              onClick={() => setShowModal(true)}
                             >
                               Delete Menu
                             </button>
+                            <Modal show={showModal} centered>
+                              <Modal.Body>
+                                Are you sure want to delete this recipe ?
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <button
+                                  style={{
+                                    backgroundColor: "white",
+                                    border: 1,
+                                    borderColor: "#efc81a",
+                                    borderRadius: 5,
+                                    width: 80,
+                                    height: 35,
+                                    color: "#efc81a",
+                                  }}
+                                  onClick={handleClose}
+                                >
+                                  Cancel
+                                </button>
+                                <button
+                                  style={{
+                                    backgroundColor: "#e33c30",
+                                    border: "none",
+                                    borderRadius: 5,
+                                    width: 80,
+                                    height: 35,
+                                    color: "white",
+                                  }}
+                                  onClick={() => handleDelete(item.id)}
+                                >
+                                  Delete
+                                </button>
+                              </Modal.Footer>
+                            </Modal>
                           </div>
                         </div>
                       </div>
@@ -260,7 +336,7 @@ export default function Profile() {
             aria-labelledby="bookmarked-tab"
           >
             {/* <!-- TODO section content start--> */}
-            <div className="container-fluid row">
+            {/* <div className="container-fluid row">
               {data?.map((item) => {
                 return (
                   <>
@@ -298,7 +374,7 @@ export default function Profile() {
                   </>
                 );
               })}
-            </div>
+            </div> */}
             {/* <!-- TODO section content end --> */}
             {/* <!-- TODO pagination start --> */}
             <div className="pagination container-fluid mt-5 d-flex justify-content-center align-items-center">

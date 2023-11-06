@@ -12,13 +12,14 @@ export const login = createAsyncThunk(
         credentials
       );
       if (response.data.success) {
+        console.log("ini response data : ", response);
         const { token, user } = response.data.data; // Akses token dan user dari response.data.data
         localStorage.setItem("token", token);
         dispatch(loginSuccess({ user, token }));
         return { user, token };
       } else {
         // Handle case when login is not successful
-        return { error: response.data.user.message };
+        return { error: response.data.data.message };
       }
     } catch (error) {
       return { error: error.message };

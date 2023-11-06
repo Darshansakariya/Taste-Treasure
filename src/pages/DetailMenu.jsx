@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import NavBar from "./../components/Navbar";
 import Footer from "./../components/Footer";
 import "./../css/detailMenu.css";
@@ -9,14 +10,16 @@ import axios from "axios";
 export default function DetailMenu() {
   const { id } = useParams();
   const [menuData, setMenuData] = useState(null);
+  const user = useSelector((state) => state.login.user);
 
   useEffect(() => {
     // Mengambil data menu dari API berdasarkan id
     axios
-      .get(`http://localhost:3000/recipe/${id}`)
+      .get(`https://kind-gray-hippopotamus-tie.cyclic.app/recipe/id/${id}`)
       .then((response) => {
-        setMenuData(response.data);
-        console.log(response.data);
+        console.log("ini data dari response : ", response);
+        const item = response.data.data[0];
+        setMenuData(item);
       })
       .catch((error) => {
         console.error("Error fetching menu data:", error);
@@ -38,7 +41,7 @@ export default function DetailMenu() {
           {/* <!-- Left --> */}
           <div className="d-flex align-items-center ms-5">
             <div className="block mt-1 ms-2 me-3"></div>
-            <img src={menuData.author_pic} alt="" className="mt-1 me-2" />
+            <img src={user?.photos} alt="" className="mt-1 me-2" />
             <div className="comment-user p-1">
               <div className="nameAcc">
                 <p className="mb-0">{menuData.author}</p>
@@ -76,23 +79,26 @@ export default function DetailMenu() {
             alt="image-menu"
           />
         </div>
-        {menuData.ingredients && (
-          <div className="ingredients mt-3 container-fluid">
-            <h3>Ingredients</h3>
-            <ul className="list-unstyled">
-              {menuData.ingredients.map((ingredient, index) => (
-                <li key={index}>- {ingredient}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {menuData.ingredients &&
+          Array.isArray(menuData.ingredients) &&
+          menuData.ingredients.length > 0 && (
+            <div className="ingredients mt-3 container-fluid">
+              <h3>Ingredients</h3>
+              <ul className="list-unstyled">
+                {menuData.ingredients.map((ingredient, index) => (
+                  <li key={index}>- {ingredient}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
         <div className="booklike d-flex justify-content-start ps-5 mt-5 container-fluid">
           {/* <!-- Button Bookmark --> */}
           <button
             type="button"
             className="book btn btn-sm  rounded me-2 justify-content-center"
           >
-            <img src="assets/img/bookmark.svg" alt="Bookmark" className="" />
+            <img src="./../assets/bookmark.svg" alt="Bookmark" className="" />
           </button>
 
           {/* <!-- Button Like --> */}
