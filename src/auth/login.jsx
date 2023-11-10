@@ -3,7 +3,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { login } from "./../store/action/login.jsx";
-import "../css/login.css";
+import "./../css/login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -38,10 +38,10 @@ export default function Login() {
   };
   return (
     <>
-      <section className="regis container">
+      <section className="login" id="login">
         <div className="content d-flex flex-lg-column flex-md-column">
-          <h3 className="mt-5">Recipe...</h3>
-          <h3 className="mt-5">Let's Get Started !</h3>
+          <h3 className="pt-5">Recipe...</h3>
+          <h3 className="pt-3">Let's Get Started !</h3>
           <p className="mb-2">Log in to your existing account</p>
           <hr className="w-60" />
           <form onSubmit={handleLogin} className="formReg">
@@ -89,7 +89,7 @@ export default function Login() {
             </div>
             <button
               type="submit"
-              className="buttonRegis btn-warning btn-md w-100 custom-button"
+              className="buttonLogin btn-warning btn-md w-100 custom-button"
             >
               Login
             </button>

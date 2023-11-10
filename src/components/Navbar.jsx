@@ -123,7 +123,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div className="user d-flex justify-content-center align-items-center col-lg-5">
+        <div className="user d-flex justify-content-end align-items-center col-lg-7 bg-red">
           <div
             className="photo me-4"
             style={{

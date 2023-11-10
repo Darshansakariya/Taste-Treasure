@@ -31,7 +31,7 @@ html {
 }
 #login {
   /* background-color: darkseagreen; */
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 #login h3 {
@@ -60,10 +60,12 @@ html {
 }
 .forgotPass .link {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .account .link {
   text-decoration: none;
+  cursor: pointer;
 }
 #name:focus {
   outline: none;
@@ -80,7 +82,7 @@ html {
   box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
   border-color: #efc81a;
 }
-.buttonRegis:hover {
+.buttonLogin:hover {
   background-color: #fff;
   color: #efc81a;
   border: 1px solid #efc81a;
