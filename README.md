@@ -132,7 +132,7 @@ Happy cooking!
 1. Clone the repo
 
    ```
-   git clone https://github.com/farhanrizqi/Ankasa.git
+   git clone https://github.com/farhanrizqi/RecipeWebV3.git
    ```
 
 2. Install NPM packages
