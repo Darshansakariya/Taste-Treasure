@@ -224,7 +224,7 @@ const SearchMenu = () => {
                           src={item.img}
                           alt="Food Image"
                           onClick={() => navigate(`/menu/${item.id}`)} // Menggunakan item._id
-                          style={{ cursor: "pointer" }} // Mengubah kursor saat mengarahkan ke gambar
+                          style={{ cursor: "pointer", borderRadius: 8 }} // Mengubah kursor saat mengarahkan ke gambar
                         />
                       </div>
                       <div className="content-title col-lg-8 col-md-7 col-sm-5">

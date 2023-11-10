@@ -111,21 +111,17 @@ Happy cooking!
 | -------------------- | ---------------------- |
 | ![Home.png][ss-home] | ![Login.png][ss-login] |
 
-|       Ticket Page        |        Booking Page        |
-| :----------------------: | :------------------------: |
-| ![Ticket.png][ss-ticket] | ![Booking.png][ss-booking] |
+|    Registration Page    |        Search Page        |
+| :---------------------: | :-----------------------: |
+| ![Ticket.png][ss-regis] | ![Booking.png][ss-search] |
 
-|    Detail Flight Page    |        Payment Page        |
-| :----------------------: | :------------------------: |
-| ![Detail.png][ss-detail] | ![Payment.png][ss-payment] |
+|     Add Menu Page     |     Edit Menu Page      |
+| :-------------------: | :---------------------: |
+| ![Detail.png][ss-add] | ![Payment.png][ss-edit] |
 
-|  Boarding Pass Page  |
-| :------------------: |
-| ![Pass.png][ss-pass] |
-
-|       Logout Page        |
-| :----------------------: |
-| ![logout.png][ss-logout] |
+|      Profile Page       |
+| :---------------------: |
+| ![Pass.png][ss-profile] |
 
 <!-- GETTING STARTED -->
 
@@ -253,16 +249,14 @@ Project Link: [https://github.com/farhanrizqi/RecipeWebV3](https://github.com/fa
 
 <!-- images section -->
 
-[ss-home]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696487285/ankasa/jsgx4pkufy4ylvlepde0.png
-[ss-home]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696487285/ankasa/jsgx4pkufy4ylvlepde0.png
-[ss-booking]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696514716/ankasa/booking_bemr41.png
-[ss-ticket]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696515504/ankasa/ticket_cx5mtc.png
-[ss-pass]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696514715/ankasa/pass_svcphc.png
-[ss-payment]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696514715/ankasa/payment_lhalq3.png
-[ss-profile]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696514715/ankasa/profile_ovp1p4.png
-[ss-detail]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696515504/ankasa/detail_lltkrt.png
-[ss-logout]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696514715/ankasa/logout_l36jsc.png
-[ss-login]: https://res.cloudinary.com/ddrecezrk/image/upload/v1696487283/ankasa/ijfmef1qm6zwsgjpaj6o.png
+[ss-home]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621266/recipe/readme/home_ocknc0.png
+[ss-home]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621266/recipe/readme/home_ocknc0.png
+[ss-login]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621264/recipe/readme/login_cvqfig.png
+[ss-regis]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621266/recipe/readme/Register_qk1jot.png
+[ss-profile]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621265/recipe/readme/profile_ltirir.png
+[ss-search]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621266/recipe/readme/search_nxjkyy.png
+[ss-add]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621263/recipe/readme/add_tbvtxb.png
+[ss-edit]: https://res.cloudinary.com/ddrecezrk/image/upload/v1699621645/recipe/readme/edit_ewvcka.png
 
 <!-- built section -->
 
