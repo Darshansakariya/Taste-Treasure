@@ -66,7 +66,7 @@
 
 ## About The Project
 
-# Welcome to Mama Recipe: Your Culinary Haven!
+# Welcome to Mama Recipe!
 
 Mama Recipe is more than just a website; it's a passion project dedicated to the joy of cooking and sharing delightful recipes with fellow food enthusiasts. Whether you're a seasoned chef or a kitchen novice, our platform is designed to inspire your culinary creativity and connect you with a community of like-minded food lovers.
 
