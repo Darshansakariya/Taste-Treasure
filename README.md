@@ -107,21 +107,21 @@ Happy cooking!
 
 ## Screenshot
 
-| Home Page            | Login Page             |
+| Registration Page            | Login Page             |
 | -------------------- | ---------------------- |
-| ![Home.png][ss-home] | ![Login.png][ss-login] |
+| ![Regis.png][ss-regis] | ![Login.png][ss-login] |
 
-|    Registration Page    |        Search Page        |
+|    Home Page    |        Search Page        |
 | :---------------------: | :-----------------------: |
-| ![Ticket.png][ss-regis] | ![Booking.png][ss-search] |
+| ![Home.png][ss-home] | ![Search.png][ss-search] |
 
 |     Add Menu Page     |     Edit Menu Page      |
 | :-------------------: | :---------------------: |
-| ![Detail.png][ss-add] | ![Payment.png][ss-edit] |
+| ![Add.png][ss-add] | ![Edit.png][ss-edit] |
 
 |      Profile Page       |
 | :---------------------: |
-| ![Pass.png][ss-profile] |
+| ![Profile.png][ss-profile] |
 
 <!-- GETTING STARTED -->
 
