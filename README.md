@@ -40,8 +40,7 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ol type='1.'>
-        <li><a href="#built-with">Built With</a></li>
+      <ol>
         <li><a href="#built-with">Built With</a></li>
       </ol>
     </li>
