@@ -42,7 +42,11 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
+      <ol>
+      <ol>
         <li><a href="#built-with">Built With</a></li>
+      </ol>
+      </ol>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -202,19 +206,21 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- LICENSE -->
 
-<!-- ## License
+## Related Project
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+:books: [`Backend Mama Recipe`](https://github.com/farhanrizqi/recipev2)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+:books: [`Mama Recipe Mobile`](https://github.com/farhanrizqi/RecipeWebV3)
 
 <!-- CONTACT -->
 
 ## Contact
 
-Farhan Rizqi - [farhanrizqi.am@gmail.com](mailto:farhanrizqi.am@gmail.com)
+- Email : [`farhanrizqi.am@gmail.com`](mailto:farhanrizqi.am@gmail.com)
 
-Project Link: [https://github.com/farhanrizqi/RecipeWebV3](https://github.com/farhanrizqi/RecipeWebV3)
+- LinkedIn : [`/in/frzq/`](https://www.linkedin.com/in/frzq/)
+
+- GitHub : [`farhanrizqi`](https://github.com/farhanrizqi)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
