@@ -42,9 +42,7 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ol>
         <li><a href="#built-with">Built With</a></li>
-      </ol>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
