@@ -2,8 +2,6 @@
 
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-
 <!-- [![Forks][forks-shield]][forks-url] -->
 
 <!-- [![Stargazers][stars-shield]][stars-url] -->
@@ -42,10 +40,8 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ol>
-      <ol>
+      <ol type='1'>
         <li><a href="#built-with">Built With</a></li>
-      </ol>
       </ol>
     </li>
     <li>
