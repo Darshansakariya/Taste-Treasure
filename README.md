@@ -17,7 +17,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/farhanrizqi/Ankasa">
+  <a href="https://github.com/farhanrizqi/RecipeWebV3">
     <img src="https://res.cloudinary.com/ddrecezrk/image/upload/v1696753518/recipe/readme/logoMamaRecipe_pfwq27.png" alt="Logo" width="200" height="200">
   </a>
 
@@ -42,16 +42,16 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
+      <ol>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
+      </ol>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
+      <ol>
         <!-- <li><a href="#prerequisites">Prerequisites</a></li> -->
         <li><a href="#installation">Installation</a></li>
-      </ul>
+      </ol>
     </li>
     <!-- <li><a href="#usage">Usage</a></li> -->
     <!-- <li><a href="#roadmap">Roadmap</a></li> -->
@@ -107,20 +107,20 @@ Happy cooking!
 
 ## Screenshot
 
-| Registration Page            | Login Page             |
-| -------------------- | ---------------------- |
+| Registration Page      | Login Page             |
+| ---------------------- | ---------------------- |
 | ![Regis.png][ss-regis] | ![Login.png][ss-login] |
 
-|    Home Page    |        Search Page        |
-| :---------------------: | :-----------------------: |
+|      Home Page       |       Search Page        |
+| :------------------: | :----------------------: |
 | ![Home.png][ss-home] | ![Search.png][ss-search] |
 
-|     Add Menu Page     |     Edit Menu Page      |
-| :-------------------: | :---------------------: |
+|   Add Menu Page    |    Edit Menu Page    |
+| :----------------: | :------------------: |
 | ![Add.png][ss-add] | ![Edit.png][ss-edit] |
 
-|      Profile Page       |
-| :---------------------: |
+|        Profile Page        |
+| :------------------------: |
 | ![Profile.png][ss-profile] |
 
 <!-- GETTING STARTED -->
