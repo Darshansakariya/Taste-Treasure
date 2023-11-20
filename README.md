@@ -28,7 +28,7 @@
     <a href="https://github.com/farhanrizqi/Ankasa"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://recipe-web-v3.vercel.app/">View Demo</a>
     ·
     <a href="mailto:farhanrizqi.am@gmail.com">Report Bug</a>
     ·
