@@ -49,14 +49,14 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ol>
-        <!-- <li><a href="#prerequisites">Prerequisites</a></li> -->
+        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ol>
     </li>
     <!-- <li><a href="#usage">Usage</a></li> -->
     <!-- <li><a href="#roadmap">Roadmap</a></li> -->
-    <li><a href="#contributing">Contributing</a></li>
-    <!-- <li><a href="#license">License</a></li> -->
+    <!-- <li><a href="#contributing">Contributing</a></li> -->
+    <li><a href="#relate">Related Project</a></li>
     <li><a href="#contact">Contact</a></li>
     <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
@@ -126,6 +126,12 @@ Happy cooking!
 <!-- GETTING STARTED -->
 
 ## Getting Started
+
+### Prerequisites
+
+Before going to the installation stage there are some software that must be installed first.
+
+- [NodeJs v18.00^](https://nodejs.org/en/download/)
 
 ### Installation
 
