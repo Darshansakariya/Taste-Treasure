@@ -37,8 +37,22 @@
 }
 
 .content-container .addPhoto {
-  padding-top: 25%;
+  /* padding-top: 25%; */
 }
+
+.upload {
+  background-color: #efc81a;
+  border-radius: 5px;
+  color: #fff;
+  border: none
+}
+.upload:hover {
+  background-color: #fff;
+  border-radius: 5px;
+  color: #efc81a;
+  border: 1px solid #efc81a;
+}
+
 
 .addPhoto,
 .addPhoto input,
@@ -67,6 +81,14 @@
   cursor: pointer;
   height: 40px;
   border-style: none;
+}
+
+.buttonPost .post:hover {
+  background-color: #fff;
+  color: #efc81a;
+  cursor: pointer;
+  height: 40px;
+  border: 1px solid #efc81a;
 }
 
 .addIngredients textarea {

@@ -23,7 +23,7 @@ export default function Profile() {
     (state) => state.profile
   );
   const { user } = useSelector((state) => state.login);
-  const isoDateString = useSelector((state) => state.login.user.created_at);
+  const isoDateString = useSelector((state) => state.login.user?.created_at);
   const date = new Date(isoDateString);
 
   const monthNames = [
@@ -129,28 +129,30 @@ export default function Profile() {
         {/* <!-- post header start --> */}
         <div className="row postHeader">
           {/* <!-- Left --> */}
-          <div className="col-md-9 d-flex align-items-center ms-5">
-            <div className="block mt-1 ms-3 me-3"></div>
-            <img
-              style={{
-                width: "40px", // Lebar div luar
-                height: "40px", // Tinggi div luar
-                overflow: "hidden", // Menghilangkan bagian gambar yang keluar dari lingkaran
-                borderRadius: "50%", // Membuat efek lingkaran
-              }}
-              src={user.photos}
-              alt=""
-              className="mt-1 me-2"
-            />
-            <div className="comment-user p-1">
-              <div className="nameAcc">
-                <p className="mb-0">{user.name}</p>
-              </div>
-              <div className="logoutAcc">
-                <p className="font-weight-bold mb-0">{`${itemsToShow.length} Recipes`}</p>
+          {user && (
+            <div className="col-md-9 d-flex align-items-center ms-5">
+              <div className="block mt-1 ms-3 me-3"></div>
+              <img
+                style={{
+                  width: "40px", // Lebar div luar
+                  height: "40px", // Tinggi div luar
+                  overflow: "hidden", // Menghilangkan bagian gambar yang keluar dari lingkaran
+                  borderRadius: "50%", // Membuat efek lingkaran
+                }}
+                src={user.photos}
+                alt=""
+                className="mt-1 me-2"
+              />
+              <div className="comment-user p-1">
+                <div className="nameAcc">
+                  <p className="mb-0">{user.name}</p>
+                </div>
+                <div className="logoutAcc">
+                  <p className="font-weight-bold mb-0">{`${itemsToShow.length} Recipes`}</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* <!-- Right --> */}
           <div className="col-md-2 content pt-3 text-right">
@@ -247,14 +249,14 @@ export default function Profile() {
                           <div className="actions mt-4">
                             <Link
                               to={`/editMenu/${item.id}`}
-                              className="btn-edit btn text-white pt-2"
+                              className="btn-edit btn pt-2"
                             >
                               Edit Menu
                             </Link>
                           </div>
-                          <div className="actions mt-4">
+                          <div className="actions mt-4 ps-2">
                             <button
-                              className="btn-delete btn text-center pt-2 text-white"
+                              className="btn-delete btn text-center pt-2 "
                               onClick={() => setShowModal(true)}
                             >
                               Delete Menu
@@ -285,7 +287,6 @@ export default function Profile() {
                                     borderRadius: 5,
                                     width: 80,
                                     height: 35,
-                                    color: "white",
                                   }}
                                   onClick={() => handleDelete(item.id)}
                                 >

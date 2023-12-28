@@ -112,10 +112,7 @@ const AddMenu = () => {
           <form onSubmit={handlePost} className="addFile w-100 pt-3 rounded">
             <div className="addPhoto bg-light h-50 mb-2 mt-5 text-center rounded">
               <div className="upload-area">
-                <label className="mt-2 text-dark" htmlFor="imageUpload">
-                  Add photo
-                </label>
-                <div ref={previewContainerRef}></div>
+                <div className="" ref={previewContainerRef}></div>
               </div>
               <input
                 type="file"
@@ -125,6 +122,12 @@ const AddMenu = () => {
                 accept="image/*"
                 onChange={previewImage}
               />
+            </div>
+            <div className="upload w-100 mb-2 p-1 text-center">
+              <label htmlFor="imageUpload">Add Photo</label>
+              {/* <label className="label-upload mt-2" htmlFor="imageUpload">
+                Add photo
+              </label> */}
             </div>
             <div className="form-group">
               <input

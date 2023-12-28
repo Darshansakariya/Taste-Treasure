@@ -13,12 +13,18 @@
   outline: none;
 }
 .buttonUpdate .update {
-  /* font-family: "Poppins"; */
   background-color: #efc81a;
   color: #fff;
   cursor: pointer;
   height: 40px;
   border-style: none;
+}
+.buttonUpdate .update:hover {
+  background-color: #fff;
+  color: #efc81a;
+  cursor: pointer;
+  height: 40px;
+  border: 1px solid #efc81a;
 }
 .addIngredients textarea {
   background-color: #f8f9fa;
@@ -29,6 +35,30 @@
   background-color: #f8f9fa;
   border-style: none;
   outline: none;
+}
+
+.upload-area {
+  width: 100%;
+  height: 200px; /* Adjust as needed */
+}
+
+.upload {
+  background-color: #efc81a;
+  border-radius: 5px;
+}
+
+.label-upload {
+  color: #fff;
+}
+.upload:hover {
+  background-color: #fff;
+  border-radius: 5px;
+  color: #efc81a;
+  border: 1px solid #efc81a;
+}
+
+.label-upload:hover {
+  color: #efc81a;
 }
 
 /* ! Content end */

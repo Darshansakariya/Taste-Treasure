@@ -6,7 +6,7 @@ export default function Resp() {
   return (
     <>
       <div className="content-resp">
-        <a href="#" className="resp text-white btn text-center ">
+        <a href="#" className="resp btn text-center w-auto ">
           10 Likes - 12 Comments - 3 Bookmarks
         </a>
       </div>

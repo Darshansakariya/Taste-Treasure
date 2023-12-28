@@ -65,7 +65,7 @@ const Navbar = () => {
         activePage === "" ? "navbar-scrolled" : ""
       }`}
     >
-      <div className="containerNav container mt-3 col-lg-11">
+      <div className="containerNav container-fluid mt-3 px-5 ">
         <div className="burger">
           <button
             className="navbar-toggler"
@@ -123,7 +123,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div className="user d-flex justify-content-end align-items-center col-lg-7 bg-red">
+        <div className="user d-flex align-items-center">
           <div
             className="photo me-4"
             style={{

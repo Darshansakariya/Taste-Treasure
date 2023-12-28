@@ -1,5 +1,13 @@
 .content-resp .resp {
   background-color: #efc81a;
+  color: #fff;
+  font-size: 10px;
+  width: 35%;
+}
+.content-resp .resp:hover {
+  background-color: #fff;
+  border: 1px solid #efc81a;
+  color: #efc81a;
   font-size: 10px;
   width: 35%;
 }
