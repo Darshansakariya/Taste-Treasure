@@ -1,7 +1,7 @@
 // authThunks.js
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { loginSuccess } from "./../../features/login";
+import { loginSuccess, loginFailed } from "./../../features/login";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -11,15 +11,22 @@ export const login = createAsyncThunk(
         "https://kind-gray-hippopotamus-tie.cyclic.app/users/login",
         credentials
       );
+
       if (response.data.success) {
-        console.log("ini response data : ", response);
-        const { token, user } = response.data.data; // Akses token dan user dari response.data.data
+        const { token, user } = response.data.data;
         localStorage.setItem("token", token);
         dispatch(loginSuccess({ user, token }));
         return { user, token };
       } else {
         // Handle case when login is not successful
-        return { error: response.data.data.message };
+        const errorMessage = response.data.data.message;
+
+        if (errorMessage === "Incorrect password") {
+          // Dispatch loginFailed action with the specific error message
+          dispatch(loginFailed(errorMessage));
+        }
+
+        return { error: errorMessage };
       }
     } catch (error) {
       return { error: error.message };

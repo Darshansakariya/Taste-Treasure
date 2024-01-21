@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "./../features/login";
 import { useDispatch, useSelector } from "react-redux";
 import "../componentsCSS/Navbar.css";
-import accImg from "../assets/iconComment.png";
+import accImg from "../assets/loggedin_user.png";
 import LogoutModal from "./../components/LogoutModal";
 
 const Navbar = () => {

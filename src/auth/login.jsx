@@ -27,10 +27,16 @@ export default function Login() {
     }
     try {
       await dispatch(login(inputData));
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.log("Oops :", err);
-      // Display an error message to the user on the UI
+      // Check if the error message is related to incorrect password
+      if (err.message === "Incorrect password") {
+        window.alert("Enter correct password");
+      } else {
+        // Display an error message to the user on the UI for other errors
+        window.alert("An error occurred. Please try again later.");
+      }
     }
   };
 
