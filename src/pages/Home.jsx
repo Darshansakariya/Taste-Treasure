@@ -22,9 +22,11 @@ export default function Home() {
 
   return (
     <>
+    
       <div className="primaryContainer container-fluid">
         <NavBar />
         <SideBlock />
+        
         {/* <!-- TODO Section Discover start --> */}
         <section id="discover">
           <div className="container">
@@ -50,6 +52,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
         {/* <!-- TODO Section Discover end --> */}
         {/* <!-- TODO Section Popular start --> */}
         <section id="popular">

@@ -17,11 +17,20 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const termsAndConditionsChecked =
+      document.getElementById("checkTerms").checked;
+
+    if (!termsAndConditionsChecked) {
+      // If not checked, show a pop-up message to the user
+      window.alert("Please agree to the terms & conditions");
+      return;
+    }
     try {
       await dispatch(login(inputData));
       navigate("/");
     } catch (err) {
       console.log("Oops :", err);
+      // Display an error message to the user on the UI
     }
   };
 

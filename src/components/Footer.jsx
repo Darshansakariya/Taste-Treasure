@@ -17,7 +17,7 @@ export default function Footer() {
         </div>
       </footer>
       {/* <!-- ! --> */}
-      <footer className="footer2 w-100 d-flex flex-column justify-content-center align-items-center">
+      <footer className="footer2 w-100 d-flex flex-row justify-content-center align-items-center">
         <div className="foot d-flex justify-content-center">
           <ul className="d-flex list-unstyled">
             <li>Product</li>

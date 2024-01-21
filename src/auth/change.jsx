@@ -85,7 +85,6 @@ export default function Change() {
                 </div>
               </div>
             </div>
-
             {/* <!-- Modal Logout end --> */}
           </div>
         </div>
