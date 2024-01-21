@@ -12,29 +12,59 @@ export default function Register() {
     pass: "",
   });
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 6;
+  };
+
   const handleRegister = async () => {
+    // Check if the name is provided
+    if (!formData.name.trim()) {
+      window.alert("Please enter your name");
+      return;
+    }
+
+    // Check if the email is provided and valid
+    if (!formData.email.trim() || !validateEmail(formData.email)) {
+      window.alert("Please enter a valid email address");
+      return;
+    }
+
+    // Check if the password is provided and meets the requirements
+    if (!formData.pass.trim() || !validatePassword(formData.pass)) {
+      window.alert("Please enter a password with at least 6 characters");
+      return;
+    }
+
+    // Check if the terms and conditions checkbox is checked
+    const termsAndConditionsChecked =
+      document.getElementById("checkTerms").checked;
+
+    if (!termsAndConditionsChecked) {
+      window.alert("Please agree to the terms & conditions");
+      return;
+    }
+
     try {
-      // Tambahkan role "users" dan URL gambar dari Cloudinary ke data registrasi
       const registrationData = {
         ...formData,
         role: "users",
         photos: "URL_foto_dari_Cloudinary",
       };
 
-      // Kirim data registrasi ke server
       const response = await axios.post(
         "https://kind-gray-hippopotamus-tie.cyclic.app/users/regis",
         registrationData
       );
 
-      // Tangani respons dari server jika diperlukan
-      console.log("Registrasi berhasil", response.data);
-
-      // Redirect atau lakukan sesuatu setelah berhasil mendaftar
+      console.log("Registration successful", response.data);
       navigate("/login");
     } catch (error) {
-      // Tangani kesalahan dari server atau validasi di sini
-      console.error("Gagal mendaftar", error);
+      console.error("Registration failed", error);
     }
   };
 
@@ -52,8 +82,8 @@ export default function Register() {
       <section className="regis">
         <div className="content d-flex flex-column">
           <h3 className="mt-5">Recipe...</h3>
-          <h3 className="mt-3">Let's Get Started !</h3>
-          <p className="mb-2">Create new account to access all features</p>
+          <h3 className="mt-3">Lets Get Started !</h3>
+          <p className="mb-2">Create a new account to access all features</p>
           <hr className="w-60" />
           <div className="formReg">
             <div className="mb-3">
@@ -61,7 +91,7 @@ export default function Register() {
                 Name
               </label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
                 id="name"
                 placeholder="Your name"
@@ -74,10 +104,10 @@ export default function Register() {
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 className="form-control"
                 id="email"
-                placeholder="johndoe@gmail.com i.e"
+                placeholder="johndoe@gmail.com"
                 value={formData.email}
                 onChange={handleInputChange}
               />
@@ -111,7 +141,7 @@ export default function Register() {
               </div>
             </div>
             <button
-              type="submit"
+              type="button" // Change type to button
               className="buttonRegis btn btn-md btn-warning w-100 custom-button text-white"
               data-toggle="modal"
               data-target="#verifyModal"
@@ -120,7 +150,7 @@ export default function Register() {
               Register Account
             </button>
             <h6 className="account mt-5 text-center">
-              Already have an account ?
+              Already have an account?
               <span>
                 <a onClick={handleLogin} className="link">
                   &nbsp;Log in here
