@@ -22,9 +22,9 @@
 .user::before {
   content: "";
   display: block;
-  width: 5px;
+  width: 660px;
   height: 3rem;
-  background-color: #efc81a;
+  /* background-color: #efc81a; */
   /* margin-right: 1rem; */
 }
 
