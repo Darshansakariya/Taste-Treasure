@@ -82,7 +82,7 @@ export default function Register() {
       <section className="regis">
         <div className="content d-flex flex-column">
           <h3 className="mt-5">Recipe...</h3>
-          <h3 className="mt-3">Lets Get Started !</h3>
+          <h3 className="mt-3">Lets Get you set up !</h3>
           <p className="mb-2">Create a new account to access all features</p>
           <hr className="w-60" />
           <div className="formReg">

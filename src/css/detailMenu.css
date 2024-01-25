@@ -1,3 +1,9 @@
+:root {
+  --main-color: #2e266f;
+  --accent-color: #efc81a;
+  --background-light: #f8f9fa;
+}
+
 * {
   font-family: "Poppins";
 }
@@ -5,80 +11,72 @@
 .content {
   margin-top: 2rem;
 }
+
 .postHeader {
   margin-top: 8rem;
 }
 
-/* ! Content start */
+/* Content start */
 .postHeader img {
   width: 40px;
-  height: 35px;
+  height: 2rem; /* Use rem for consistency */
 }
 
 .content-container h1 {
-  color: #2e266f;
+  color: var(--main-color);
 }
-.addFile input {
-  height: 60px;
-  background-color: #f8f9fa;
+
+.addFile input,
+.addIngredients textarea,
+.comment-section textarea {
+  background-color: var(--background-light);
   border-style: none;
   outline: none;
 }
-.ingredients {
-  padding-left: 20%;
-}
-.addIngredients textarea {
-  background-color: #f8f9fa;
-  border-style: none;
-  outline: none;
-}
+
 .booklike .book {
-  background-color: #efc81a;
+  background-color: var(--accent-color);
   height: 34px;
   width: 34px;
 }
-.book img {
-  padding-right: 50%;
+
+.book img,
+.like img {
+  margin-right: 50%; /* Adjust margin for spacing */
   height: 24px;
   width: 24px;
 }
+
 .booklike .like {
   background-color: #fff;
   height: 34px;
   width: 34px;
-  border: 1px solid #efc81a;
-}
-.like img {
-  padding-right: 50%;
-  height: 24px;
-  width: 24px;
+  border: 1px solid var(--accent-color);
 }
 
 .bar {
   width: 95%;
   height: 2px;
   border: none;
-  background: #efc81a;
+  background: var(--accent-color);
 }
 
-.comment-section textarea {
-  background-color: #f8f9fa;
-  border-style: none;
-  outline: none;
-  width: 40%;
-}
 .comment-section button {
-  background-color: #efc81a;
+  background-color: var(--accent-color);
   border-style: none;
   outline: none;
 }
-/* ! comment content start */
 
+/* Comment content start */
 .comment-content img {
   height: 45px;
   width: 45px;
 }
+/* Comment content end */
 
-/* ! comment content end */
+/* Content end */
 
-/* ! Content end */
+/* Responsive Design */
+@media screen and (max-width: 1920px) {
+  /* Add responsive styles here */
+}

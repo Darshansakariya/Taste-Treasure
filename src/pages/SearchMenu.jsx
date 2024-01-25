@@ -135,7 +135,7 @@ const SearchMenu = () => {
   };
 
   const getItemsForPage = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
+    const startIndex = currentPage - 1;
     const endIndex = startIndex + itemsPerPage;
 
     // Menambahkan filter pencarian
