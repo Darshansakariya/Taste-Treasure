@@ -157,7 +157,7 @@ const SearchMenu = () => {
           <div className="slide1 mt-4 ms-5">
             <section>
               <h1>
-                Discover Recipe <br />& Delicious Food
+                Search & Explore Your Favorite <br /> Recipes
               </h1>
             </section>
             <div className="searchBar d-flex">
