@@ -163,9 +163,9 @@ const SearchMenu = () => {
             <div className="searchBar d-flex">
               <input
                 type="text"
-                className="search col-4 ps-5 border-0 font-weight-normal"
+                className="search col-6 ps-5 border-0 font-weight-normal"
                 value={searchKeyword}
-                placeholder="Telur Gulung"
+                placeholder="Enter Recipe or Ingredients"
                 onChange={handleKeywordChange}
               />
               <button
