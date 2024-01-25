@@ -83,12 +83,12 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mt-2 mb-lg-0">
               <li
                 className={`nav-item me-5 ${
-                  location.pathname === "/" ? "active" : ""
+                  location.pathname === "/home" ? "active" : ""
                 }`}
               >
                 <Link
                   className="nav-link"
-                  to="/"
+                  to="/home"
                   onClick={() => handleActivePage("home")}
                 >
                   Home
