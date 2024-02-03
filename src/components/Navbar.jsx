@@ -14,7 +14,7 @@ const Navbar = () => {
   const [activePage, setActivePage] = useState("");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  // Menggunakan useSelector untuk mengambil informasi pengguna dari Redux store
+  // Using useSelector to retrieve user information from Redux store
   const user = useSelector((state) => state.login.user);
 
   useEffect(() => {

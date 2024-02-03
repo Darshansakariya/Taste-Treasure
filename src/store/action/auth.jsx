@@ -23,7 +23,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       loginSuccess({ user: response.data.users, token: response.data.token })
     );
 
-    // Simpan token ke localStorage
+    // Save Token to Local Storage
     localStorage.setItem("token", response.data.token);
   } catch (error) {
     dispatch(loginFailure());
@@ -41,7 +41,7 @@ export const registerUser = (userData) => async (dispatch) => {
 
     dispatch(setRegistrationData(response.data));
 
-    // Anda dapat menambahkan navigasi atau tindakan lain di sini jika perlu
+    // You can add navigation or other actions here if needed
   } catch (error) {
     dispatch(setRegistrationError(error.message));
   }

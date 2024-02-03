@@ -141,7 +141,7 @@ export default function EditMenu() {
                   <img
                     src={editMenu.img}
                     alt="Preview"
-                    style={{ maxWidth: "100%", maxHeight: "200px" }}
+                    style={{ maxWidth: "50%", maxHeight: "300px" }}
                   />
                 )} */}
                 <div ref={previewContainerRef}></div>
@@ -190,9 +190,10 @@ export default function EditMenu() {
                 onChange={onChange}
               >
                 <option value="0">Category</option>
-                <option value="1">Appetizer</option>
-                <option value="2">Main Course</option>
-                <option value="3">Dessert</option>
+                <option value="1">Salad</option>
+                <option value="2">Starter</option>
+                <option value="3">Main Course</option>
+                <option value="4">Dessert</option>
               </select>
             </div>
             <div className="buttonUpdate mt-3 mb-5 d-flex justify-content-center align-items-center">

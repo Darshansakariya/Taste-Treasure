@@ -13,7 +13,7 @@ export default function DetailMenu() {
   const user = useSelector((state) => state.login.user);
 
   useEffect(() => {
-    // Mengambil data menu dari API berdasarkan id
+    // Fetching menu data from API based on id
     axios
       .get(`https://kind-gray-hippopotamus-tie.cyclic.app/recipe/id/${id}`)
       .then((response) => {
@@ -27,7 +27,7 @@ export default function DetailMenu() {
   }, [id]);
 
   if (!menuData) {
-    // Tampilkan loading atau pesan jika data sedang diambil
+    // Show loading or message if data is being retrieved
     return <p>Loading...</p>;
   }
 

@@ -25,12 +25,12 @@ const AddMenu = () => {
   const previewContainerRef = useRef();
 
   const token = localStorage.getItem("token");
-  // Pastikan token ada sebelum menggunakannya
+  // Make sure the token exists before using it
   if (token) {
-    // Lakukan apa yang Anda perlukan dengan token
+    // Do what you need with the token
     console.log("Token:", token);
   } else {
-    // Token tidak ditemukan di local storage, atasi sesuai kebutuhan Anda
+    // Token not found in local storage, solve it according to your needs
     console.log("Token tidak ditemukan di local storage");
   }
 

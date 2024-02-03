@@ -14,16 +14,16 @@ const SearchMenu = () => {
   const [data, setData] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [userMap, setUserMap] = useState({});
-  const [searchKeyword, setSearchKeyword] = useState(""); // State untuk kata kunci pencarian
-  const [searchResults, setSearchResults] = useState([]); // State untuk hasil pencarian
+  const [searchKeyword, setSearchKeyword] = useState(""); // State for search keywords
+  const [searchResults, setSearchResults] = useState([]); // State for search results
   const [totalPages, setTotalPages] = useState(0);
   const token = localStorage.getItem("token");
-  // Pastikan token ada sebelum menggunakannya
+  // Make sure the token exists before using it
   if (token) {
-    // Lakukan apa yang Anda perlukan dengan token
+    // Do what you need with the token
     console.log("Token:", token);
   } else {
-    // Token tidak ditemukan di local storage, atasi sesuai kebutuhan Anda
+    // Token not found in local storage, solve it according to your needs
     console.log("Token tidak ditemukan di local storage");
   }
 
@@ -106,7 +106,7 @@ const SearchMenu = () => {
 
       const searchData = response.data.data;
 
-      // Filter data berdasarkan kata kunci pencarian
+      // Filter data based on search keywords
       const filteredData = searchData.filter((item) => {
         return (
           item.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
@@ -118,7 +118,7 @@ const SearchMenu = () => {
         );
       });
 
-      // Simpan hasil pencarian ke dalam state
+      // Save search results into state
       setSearchResults(filteredData);
     } catch (error) {
       console.log(error);
@@ -127,7 +127,7 @@ const SearchMenu = () => {
 
   const handleKeywordChange = (e) => {
     setSearchKeyword(e.target.value);
-    setSearchResults([]); // Membersihkan hasil pencarian
+    setSearchResults([]); // Cleaning search results
   };
 
   const handlePageChange = (page) => {
@@ -138,7 +138,7 @@ const SearchMenu = () => {
     const startIndex = currentPage - 1;
     const endIndex = startIndex + itemsPerPage;
 
-    // Menambahkan filter pencarian
+    // Added search filters
     const filteredData = data.filter((item) =>
       item.title.toLowerCase().includes(searchKeyword.toLowerCase())
     );
@@ -149,10 +149,6 @@ const SearchMenu = () => {
     <>
       <div className="primary">
         <NavBar />
-        {/* <!-- colorbox start--> */}
-        {/* <div className="accentBlock"></div> */}
-        {/* <!-- colorbox end --> */}
-        {/* <!-- TODO section search start --> */}
         <section className="discover">
           <div className="slide1 mt-4 ms-5">
             <section>
@@ -223,8 +219,8 @@ const SearchMenu = () => {
                           id="food-image"
                           src={item.img}
                           alt="Food Image"
-                          onClick={() => navigate(`/menu/${item.id}`)} // Menggunakan item._id
-                          style={{ cursor: "pointer", borderRadius: 8 }} // Mengubah kursor saat mengarahkan ke gambar
+                          onClick={() => navigate(`/menu/${item.id}`)} // Using item._id
+                          style={{ cursor: "pointer", borderRadius: 8 }} // Changes the cursor when hovering over an image
                         />
                       </div>
                       <div className="content-title col-lg-8 col-md-7 col-sm-5">

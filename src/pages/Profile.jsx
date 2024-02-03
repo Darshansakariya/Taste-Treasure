@@ -42,7 +42,7 @@ export default function Profile() {
   ];
 
   const day = date.getDate();
-  const month = monthNames[date.getMonth()]; // Ingat bahwa bulan dimulai dari 0
+  const month = monthNames[date.getMonth()]; // Remember that months start at 0
   const year = date.getFullYear();
 
   const formattedDate = `${day} ${month} ${year}`;
@@ -57,11 +57,11 @@ export default function Profile() {
     }
 
     try {
-      // Mendapatkan ID pengguna dari token (contoh: token memiliki properti 'id')
+      //Getting user ID from token (example: token has 'id' property)
       const tokenData = JSON.parse(atob(token.split(".")[1])); // Parse data token
       const userId = tokenData.id;
 
-      // Menggantikan :id dalam URL dengan ID pengguna yang sesuai
+      // Replace :id in the URL with the appropriate user ID
       const url = `https://kind-gray-hippopotamus-tie.cyclic.app/recipe/users/${userId}`;
 
       const response = await axios.get(url, {
@@ -84,7 +84,7 @@ export default function Profile() {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      // Handle jika token tidak ditemukan
+      // Handle if the token is not found
       console.log("Token not found in localStorage.");
       return;
     }
@@ -134,10 +134,10 @@ export default function Profile() {
               <div className="block mt-1 ms-3 me-3"></div>
               <img
                 style={{
-                  width: "40px", // Lebar div luar
-                  height: "40px", // Tinggi div luar
-                  overflow: "hidden", // Menghilangkan bagian gambar yang keluar dari lingkaran
-                  borderRadius: "50%", // Membuat efek lingkaran
+                  width: "40px", // Outer div width
+                  height: "40px", // Outer div height
+                  overflow: "hidden", // Removes the part of the image that is outside the circle
+                  borderRadius: "50%", // Create a circle effect
                 }}
                 src={user.photos}
                 alt=""
@@ -387,7 +387,7 @@ export default function Profile() {
             {/* <!-- TODO pagination end -->  */}
           </div>
 
-          {/* <!-- Konten Tab Liked --> */}
+          {/* <!-- content Tab Liked --> */}
           <div
             className="tab-pane fade"
             id="liked"
@@ -395,7 +395,7 @@ export default function Profile() {
             aria-labelledby="liked-tab"
           >
             <h3>Liked Content</h3>
-            {/* <!-- Tempat untuk menampilkan konten resep yang telah disukai (liked) --> */}
+            {/* <!-- A place to display recipe content that has been liked (liked) --> */}
           </div>
         </div>
       </div>

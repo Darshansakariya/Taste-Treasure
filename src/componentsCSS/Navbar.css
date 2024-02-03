@@ -3,11 +3,11 @@
   transition: background-color 0.4s;
 }
 .navbar-light-text {
-  color: #ffffff; /* Warna teks default (putih) */
+  color: #ffffff; /* Default text color (white) */
 }
 
 .navbar-scrolled .navbar-light-text {
-  color: #efc81a; /* Warna teks saat di-scroll (#efc81a) */
+  color: #efc81a; /* Text color when scrolling(#efc81a) */
 }
 
 .navbar-scrolled {
