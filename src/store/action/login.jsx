@@ -1,7 +1,8 @@
-// authThunks.js
+// src/store/action/login.jsx
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { loginSuccess, loginFailed } from "./../../features/login";
+import { loginSuccess, loginFailed } from "../../features/login";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -18,11 +19,9 @@ export const login = createAsyncThunk(
         dispatch(loginSuccess({ user, token }));
         return { user, token };
       } else {
-        // Handle case when login is not successful
         const errorMessage = response.data.data.message;
 
         if (errorMessage === "Incorrect password") {
-          // Dispatch loginFailed action with the specific error message
           dispatch(loginFailed(errorMessage));
         }
 

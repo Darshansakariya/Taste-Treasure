@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { login } from "./../store/action/login.jsx";
 import "./../css/login.css";
@@ -29,7 +27,7 @@ export default function Login() {
       await dispatch(login(inputData));
       navigate("/home");
     } catch (err) {
-      console.log("Oops :", err);
+      console.log("Oops:", err);
       // Check if the error message is related to incorrect password
       if (err.message === "Incorrect password") {
         window.alert("Enter correct password");
@@ -56,7 +54,7 @@ export default function Login() {
       <section className="login" id="login">
         <div className="content d-flex flex-lg-column flex-md-column">
           <h3 className="pt-5">Recipe...</h3>
-          <h3 className="pt-3">Let's Get Started !</h3>
+          <h3 className="pt-3">Let's Get Started!</h3>
           <p className="mb-2">Log in to your existing account</p>
           <hr className="w-60" />
           <form onSubmit={handleLogin} className="formReg">

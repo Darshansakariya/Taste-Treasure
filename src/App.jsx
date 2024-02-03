@@ -6,6 +6,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UserList from "./components/UserList";
 import Home from "./pages/Home";
 import AddMenu from "./pages/AddMenu";
 import Profile from "./pages/Profile";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/forgot" element={<ForgotPassword />} />
           <Route path="/change" element={<Change />} />
           <Route path="/menu/:id" element={<DetailMenu />} />
+          <Route path="UserList" element={<UserList />}></Route>
         </Routes>
       </Router>
       <ToastContainer />
