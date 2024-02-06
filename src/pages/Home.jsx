@@ -8,12 +8,12 @@ import { setDiscoverInput } from "./../features/home";
 import discoverImage from "./../assets/recipe pic 1.png";
 import mainrecipe1 from "./../assets/recipe pic 2.png";
 import mainrecipe2 from "./../assets/recipe pic 3.png";
-// import recipe4image from "./../assets/recipe pic 4.png";
-// import recipe5image from "./../assets/recipe pic 5.png";
-// import recipe6image from "./../assets/recipe pic 6.png";
-// import recipe7image from "./../assets/recipe pic .png";
+import recipe4image from "./../assets/recipe pic 4.png";
+import recipe5image from "./../assets/recipe pic 5.png";
+import recipe6image from "./../assets/recipe pic 6.png";
+import recipe7image from "./../assets/recipe pic 7.png";
 import NavBar from "./../components/Navbar";
-import SideBlock from "./../components/SideBlock";
+// import SideBlock from "./../components/SideBlock";
 import Footer from "./../components/Footer";
 
 export default function Home() {
@@ -169,28 +169,34 @@ export default function Home() {
             <div className="row">
               <div className="pageTitle col d-flex align-items-center ms-0">
                 <div className="block"></div>
-                <h2 className="text-lg-start">Popular Recipe</h2>
+                <h2 className="text-lg-start">
+                  Check Out Other Recipes Of Your Favourite Category !
+                </h2>
               </div>
             </div>
             <div className="content-top row">
               <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe1 rounded-3">
-                  <p>Chicken Kare</p>
+                  <img src={recipe4image} alt="Salad" width="200" />
+                  <div className="salad"> Salads </div>
                 </div>
               </div>
               <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe2 rounded-3">
-                  <p>Bomb Chicken</p>
+                  <img src={recipe5image} alt="Appetizer" width="200" />
+                  <div className="appetizer"> Appetizer </div>
                 </div>
               </div>
               <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe3 rounded-3">
-                  <p>Banana Smothie Pop</p>
+                  <img src={recipe6image} alt="Main Course" width="200" />
+                  <div className="maincourse"> Main Course </div>
                 </div>
               </div>
               <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe4 rounded-3">
-                  <p>Coffee Lava Cake</p>
+                  <img src={recipe7image} alt="Dessert" width="200" />
+                  <div className="dessert"> Dessert </div>
                 </div>
               </div>
             </div>
