@@ -13,7 +13,7 @@ import recipe5image from "./../assets/recipe pic 5.png";
 import recipe6image from "./../assets/recipe pic 6.png";
 import recipe7image from "./../assets/recipe pic 7.png";
 import NavBar from "./../components/Navbar";
-// import SideBlock from "./../components/SideBlock";
+import SideBlock from "./../components/SideBlock";
 import Footer from "./../components/Footer";
 
 export default function Home() {
