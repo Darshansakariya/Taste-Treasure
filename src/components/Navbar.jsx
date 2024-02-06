@@ -13,6 +13,7 @@ const Navbar = () => {
   const location = useLocation();
   const [activePage, setActivePage] = useState("");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [navbarColor, setNavbarColor] = useState("#efc81a");
 
   // Using useSelector to retrieve user information from Redux store
   const user = useSelector((state) => state.login.user);
@@ -24,6 +25,11 @@ const Navbar = () => {
         navbar.classList.add("navbar-scrolled");
       } else {
         navbar.classList.remove("navbar-scrolled");
+      }
+      if (activePage === "SearchMenu") {
+        setNavbarColor("fffff");
+      } else {
+        setNavbarColor("efc81a");
       }
     };
 
@@ -64,8 +70,9 @@ const Navbar = () => {
       className={`navbar navbar-expand-lg navbar-light --bs-light-text-emphasis fixed-top ${
         activePage === "" ? "navbar-scrolled" : ""
       }`}
+      style={{ backgroundColor: navbarColor }} // Set background color dynamically
     >
-      <div className="containerNav container-fluid mt-3 px-5 ">
+      <div className="containerNav container-fluid mt-3 px-5">
         <div className="burger">
           <button
             className="navbar-toggler"
@@ -127,10 +134,10 @@ const Navbar = () => {
           <div
             className="photo me-4"
             style={{
-              width: "40px", // Lebar div luar
-              height: "40px", // Tinggi div luar
-              overflow: "hidden", // Menghilangkan bagian gambar yang keluar dari lingkaran
-              borderRadius: "50%", // Membuat efek lingkaran
+              width: "40px", // Width of the outer div
+              height: "40px", // The height of the outer div
+              overflow: "hidden", // Removes the part of the image that is outside the circle
+              borderRadius: "50%", // Create a circle effect
             }}
           >
             <img
@@ -139,10 +146,10 @@ const Navbar = () => {
               width="40"
               height="40"
               onClick={handleProfileClick}
-              // style={{
-              //   borderRadius: "20%", // Menetapkan border-radius 50% untuk membuat gambar bulat
-              //   cursor: "pointer", // Menambahkan kursor pointer untuk menunjukkan bahwa gambar dapat diklik
-              // }}
+              style={{
+                borderRadius: "20%", // Set border-radius 50% to make the image round
+                cursor: "pointer", // Added a pointer cursor to indicate that the image is clickable
+              }}
             />
           </div>
           <div className="text">

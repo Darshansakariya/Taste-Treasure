@@ -1,18 +1,40 @@
 .navbar {
-  background-color: transparent;
+  background-color: #efc81a; /* Change to yellow */
   transition: background-color 0.4s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add drop shadow */
 }
+
 .navbar-light-text {
   color: #ffffff; /* Default text color (white) */
 }
 
 .navbar-scrolled .navbar-light-text {
-  color: #efc81a; /* Text color when scrolling(#efc81a) */
+  color: #efc81a; /* Text color when scrolling (#efc81a) */
 }
 
 .navbar-scrolled {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.active a,
+.nav-item:hover a {
+  color: #000000; /* Text color on hover or when the page is active */
+}
+
+.nav-item a {
+  color: #ffffff; /* Default text color (white) */
+}
+
+.nav-item.active {
+  background-color: #fff; /* Background color when the page is active */
+  border-radius: 5px; /* Add rounded corners for the active state */
+}
+
+/* Add transition for smooth effect */
+.nav-item a,
+.nav-item.active {
+  transition: color 0.3s, background-color 0.3s;
 }
 
 * {

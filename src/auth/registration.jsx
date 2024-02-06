@@ -94,9 +94,10 @@ export default function Register() {
                 type="text"
                 className="form-control"
                 id="name"
-                placeholder="Your name"
+                placeholder="Enter Your name"
                 value={formData.name}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className="mb-3">
@@ -107,9 +108,10 @@ export default function Register() {
                 type="email"
                 className="form-control"
                 id="email"
-                placeholder="johndoe@gmail.com"
+                placeholder="Enter Your email"
                 value={formData.email}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className="mb-3">
@@ -120,9 +122,10 @@ export default function Register() {
                 type="password"
                 className="form-control"
                 id="pass"
-                placeholder=""
+                placeholder="Enter new password"
                 value={formData.pass}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className="terms">
@@ -131,6 +134,7 @@ export default function Register() {
                   className="form-check-input"
                   type="checkbox"
                   id="checkTerms"
+                  required
                 />
                 <label
                   className="form-check-label text-sm-left"

@@ -5,9 +5,13 @@
 import "./../css/home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setDiscoverInput } from "./../features/home";
-import discoverImage from "./../assets/discover.png";
-import fypImage from "./../assets/fyp.png";
-import newRecipeImage from "./../assets/newRecipe.png";
+import discoverImage from "./../assets/recipe pic 1.png";
+import mainrecipe1 from "./../assets/recipe pic 2.png";
+import mainrecipe2 from "./../assets/recipe pic 3.png";
+// import recipe4image from "./../assets/recipe pic 4.png";
+// import recipe5image from "./../assets/recipe pic 5.png";
+// import recipe6image from "./../assets/recipe pic 6.png";
+// import recipe7image from "./../assets/recipe pic .png";
 import NavBar from "./../components/Navbar";
 import SideBlock from "./../components/SideBlock";
 import Footer from "./../components/Footer";
@@ -17,9 +21,17 @@ export default function Home() {
   const discoverInput = useSelector((state) => state.home.discoverInput);
 
   const handleDiscoverInput = (event) => {
-    dispatch(setDiscoverInput(event.target.value));
+    const searchQuery = event.target.value.trim();
+    dispatch(setDiscoverInput(searchQuery));
   };
+  const handleSearchButtonClick = () => {
+    const searchQuery = discoverInput.trim();
 
+    if (searchQuery) {
+      // Redirect to the SearchMenu page with the search query
+      history.push(`/SearchMenu?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
   return (
     <>
       <div className="primaryContainer container-fluid">
@@ -34,15 +46,22 @@ export default function Home() {
                     Discover Recipe <br />& Delicious Food
                   </h1>
                 </section>
-                <input
-                  type="text"
-                  className="search rounded-3 border-0"
-                  placeholder="Search Restaurant, Food"
-                  value={discoverInput}
-                  onChange={handleDiscoverInput}
-                />
+                <div className="search-container">
+                  <input
+                    type="text"
+                    className="search rounded-3 border-0"
+                    placeholder="Search Recipe, Food, Ingredient"
+                    value={discoverInput}
+                    onChange={handleDiscoverInput}
+                  />
+                  <button
+                    className="search-button"
+                    onClick={handleSearchButtonClick}
+                  >
+                    Search
+                  </button>
+                </div>
               </div>
-
               <div className="slide2 col-md-5">
                 <img className="rounded-4" src={discoverImage} alt="discover" />
               </div>
@@ -78,20 +97,20 @@ export default function Home() {
               </div>
               {/* <!-- dot 6 end --> */}
               <div className="image2 col-md-5">
-                <img src={fypImage} width="440" alt="Popular For You !" />
+                <img src={mainrecipe1} width="440" alt="Popular For You !" />
               </div>
               <div className="slide2 col-md-6 d-flex align-items-center ms-5">
                 <div className="wrapper">
                   <h2>
-                    Healthy Bone Broth
+                    Healthy Bites:
                     <br />
-                    Ramen (Quick &amp; Easy)
+                    Nourishing Sandwich Creations
                   </h2>
                   <hr />
                   <h5>
-                    Quick + Easy Chicken Bone Broth Ramen-
+                    “Quick + Easy Veggie Delight Sandwich -
                     <br />
-                    Healthy chicken ramen in a hurry? That’s right!
+                    Elevate Your Lunch in Minutes!“
                   </h5>
                   <button className="learnMore mt-2 border-0 rounded-2">
                     Learn More
@@ -116,7 +135,7 @@ export default function Home() {
               <div className="slide1 col-5">
                 <div className="sideBarLeft"></div>
                 <div className="image3">
-                  <img src={newRecipeImage} width="440" alt="Burger" />
+                  <img src={mainrecipe2} width="440" alt="Burger" />
                 </div>
               </div>
               {/* <!-- left end --> */}
@@ -154,54 +173,24 @@ export default function Home() {
               </div>
             </div>
             <div className="content-top row">
-              <div className="col-4 mt-5 d-flex justify-content-center">
+              <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe1 rounded-3">
-                  <p>
-                    Chicken <br />
-                    Kare
-                  </p>
+                  <p>Chicken Kare</p>
                 </div>
               </div>
-              <div className="col-4 mt-5 d-flex justify-content-center">
+              <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe2 rounded-3">
-                  <p>
-                    Bomb <br />
-                    Chicken
-                  </p>
+                  <p>Bomb Chicken</p>
                 </div>
               </div>
-              <div className="col-4 mt-5 d-flex justify-content-center">
+              <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe3 rounded-3">
-                  <p>
-                    Banana
-                    <br />
-                    Smothie Pop
-                  </p>
+                  <p>Banana Smothie Pop</p>
                 </div>
               </div>
-              <div className="col-4 mt-5 d-flex justify-content-center">
+              <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe4 rounded-3">
-                  <p>
-                    Coffe Lava <br />
-                    Cake
-                  </p>
-                </div>
-              </div>
-              <div className="col-4 mt-5 d-flex justify-content-center">
-                <div className="recipe5 rounded-3">
-                  <p>
-                    Sugar <br />
-                    Salmon
-                  </p>
-                </div>
-              </div>
-              <div className="col-4 mt-5 d-flex justify-content-center">
-                <div className="recipe6 rounded-3">
-                  <p>
-                    Indian
-                    <br />
-                    Salad
-                  </p>
+                  <p>Coffee Lava Cake</p>
                 </div>
               </div>
             </div>

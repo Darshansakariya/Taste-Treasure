@@ -67,7 +67,7 @@ export default function Login() {
                 className="form-control"
                 id="email"
                 name="email"
-                placeholder="johndoe@gmail.com i.e"
+                placeholder="Enter Your Email"
                 value={inputData.email}
                 onChange={onChange}
                 required
@@ -80,6 +80,7 @@ export default function Login() {
               <input
                 type="password"
                 className="form-control"
+                placeholder="Enter Your Password"
                 id="pass"
                 name="pass"
                 value={inputData.pass}
@@ -92,6 +93,7 @@ export default function Login() {
                 className="form-check-input"
                 type="checkbox"
                 id="checkTerms"
+                required
               />
               <label
                 className="form-check-label text-sm-left"

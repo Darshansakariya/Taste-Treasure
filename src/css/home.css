@@ -8,6 +8,22 @@ body {
   max-width: 100%;
 }
 
+.search-button {
+  margin-left: 30px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #efc81a;
+  font-size: 20px;
+  height: 58px;
+  border-radius: 13px;
+  color: #fff;
+}
+
+.search-container {
+  display: flex;
+  margin-top: 10px;
+}
+
 .container {
   max-width: 100%;
   margin-bottom: 10rem;
@@ -65,7 +81,7 @@ body {
   width: 1%;
   height: 80px;
   margin-right: 15px;
-  background: #efc81a;
+  /* background: #efc81a; */
 }
 
 /* .nav-account img {
@@ -239,7 +255,7 @@ body {
 /* ! New Recipe end */
 /* ! Popular Recipe start */
 .recipe1 {
-  background-image: url("../assets/gambarSatu.png");
+  background-image: url("../assets/recipe pic 4.png");
   width: 15rem;
   height: 15rem;
   background-size: cover;
@@ -248,14 +264,14 @@ body {
 }
 
 .recipe1 p {
-  color: #3f3a3a;
-  font-size: 15px;
-  margin-top: 11rem;
-  margin-left: 1rem;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 13rem;
+  margin-left: 4rem;
 }
 
 .recipe2 {
-  background-image: url("../assets/gambarDua.png");
+  background-image: url("../assets/recipe pic 5.png");
   width: 15rem;
   height: 15rem;
   background-size: cover;
@@ -264,14 +280,14 @@ body {
 }
 
 .recipe2 p {
-  color: #3f3a3a;
-  font-size: 15px;
-  margin-top: 11rem;
-  margin-left: 1rem;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 13rem;
+  margin-left: 4rem;
 }
 
 .recipe3 {
-  background-image: url("../assets/gambarTiga.png");
+  background-image: url("../assets/recipe pic 6.png");
   width: 15rem;
   height: 15rem;
   background-size: cover;
@@ -280,14 +296,14 @@ body {
 }
 
 .recipe3 p {
-  color: #3f3a3a;
-  font-size: 15px;
-  margin-top: 11rem;
-  margin-left: 1rem;
+  color: #000000;
+  font-size: 19px;
+  margin-top: 13rem;
+  margin-left: 2rem;
 }
 
 .recipe4 {
-  background-image: url("../assets/gambarEmpat.png");
+  background-image: url("../assets/recipe pic 7.png");
   width: 15rem;
   height: 15rem;
   background-size: cover;
@@ -296,10 +312,10 @@ body {
 }
 
 .recipe4 p {
-  color: #3f3a3a;
-  font-size: 15px;
-  margin-top: 11rem;
-  margin-left: 1rem;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 13rem;
+  margin-left: 3rem;
 }
 
 .recipe5 {
