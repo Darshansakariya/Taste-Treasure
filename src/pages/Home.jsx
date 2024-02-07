@@ -12,6 +12,10 @@ import recipe4image from "./../assets/recipe pic 4.png";
 import recipe5image from "./../assets/recipe pic 5.png";
 import recipe6image from "./../assets/recipe pic 6.png";
 import recipe7image from "./../assets/recipe pic 7.png";
+import recipe8image from "./../assets/recipe pic 8.png";
+import recipe9image from "./../assets/recipe pic 9.png";
+import recipe10image from "./../assets/recipe pic 10.png";
+import recipe11image from "./../assets/recipe pic 11.png";
 import NavBar from "./../components/Navbar";
 // import SideBlock from "./../components/SideBlock";
 import Footer from "./../components/Footer";
@@ -197,6 +201,44 @@ export default function Home() {
                 <div className="recipe4 rounded-3">
                   <img src={recipe7image} alt="Dessert" width="200" />
                   <div className="dessert"> Dessert </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* <!-- TODO Section Top end --> */}
+        {/* <!-- TODO Section Top start --> */}
+        <section id="top">
+          <div className="container">
+            <div className="row">
+              <div className="pageTitle col d-flex align-items-center ms-0">
+                <div className="block"></div>
+                <h2 className="text-lg-start">Check Out By Region !</h2>
+              </div>
+            </div>
+            <div className="content-top row">
+              <div className="col-3 mt-5 d-flex justify-content-center">
+                <div className="recipe1 rounded-3">
+                  <img src={recipe8image} alt="Salad" width="200" />
+                  <div className="gujarati"> Gujarati </div>
+                </div>
+              </div>
+              <div className="col-3 mt-5 d-flex justify-content-center">
+                <div className="recipe2 rounded-3">
+                  <img src={recipe9image} alt="Appetizer" width="200" />
+                  <div className="punjabi"> Punjabi </div>
+                </div>
+              </div>
+              <div className="col-3 mt-5 d-flex justify-content-center">
+                <div className="recipe3 rounded-3">
+                  <img src={recipe10image} alt="Main Course" width="200" />
+                  <div className="southindian"> South Indian </div>
+                </div>
+              </div>
+              <div className="col-3 mt-5 d-flex justify-content-center">
+                <div className="recipe4 rounded-3">
+                  <img src={recipe11image} alt="Dessert" width="200" />
+                  <div className="chinese"> Chinese </div>
                 </div>
               </div>
             </div>

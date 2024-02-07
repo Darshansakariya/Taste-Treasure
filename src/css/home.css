@@ -300,6 +300,34 @@ body {
   margin-top: 10px; /* Adjust as needed */
   margin-left: 65px;
 }
+.gujarati {
+  font-family: "poppins", sans-serif;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px; /* Adjust as needed */
+  margin-left: 65px;
+}
+.punjabi {
+  font-family: "poppins", sans-serif;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px; /* Adjust as needed */
+  margin-left: 65px;
+}
+.southindian {
+  font-family: "poppins", sans-serif;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px; /* Adjust as needed */
+  margin-left: 45px;
+}
+.chinese {
+  font-family: "poppins", sans-serif;
+  color: #000000;
+  font-size: 20px;
+  margin-top: 10px; /* Adjust as needed */
+  margin-left: 65px;
+}
 .content-top {
   /* background-color: bisque; */
   margin-left: 15%;

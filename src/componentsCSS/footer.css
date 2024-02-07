@@ -3,8 +3,9 @@
   background-color: #efc81a;
   height: 100%;
 }
-.footer2 {
-  background-color: #efc81a;
+.footer2 a {
+  color: #020202; /* Set text color to white */
+  text-decoration: none;
 }
 
 .wrapper5 {
