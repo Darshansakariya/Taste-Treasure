@@ -40,6 +40,10 @@ export default function Home() {
     <>
       <div className="primaryContainer container-fluid">
         <NavBar />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         {/* <!-- TODO Section Discover start --> */}
         <section id="discover">
           <div className="container">
@@ -57,9 +61,10 @@ export default function Home() {
                     placeholder="Search Recipe, Food, Ingredient"
                     value={discoverInput}
                     onChange={handleDiscoverInput}
+                    style={{ fontFamily: "Arial, sans-serif" }}
                   />
                   <button
-                    className="search-button"
+                    className="search-button border-0"
                     onClick={handleSearchButtonClick}
                   >
                     Search

@@ -8,6 +8,10 @@ body {
   max-width: 100%;
 }
 
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 .search-button {
   margin-left: 30px;
   padding: 8px 16px;
@@ -17,6 +21,7 @@ body {
   height: 58px;
   border-radius: 13px;
   color: #fff;
+  font-family: "arial";
 }
 
 .search-container {

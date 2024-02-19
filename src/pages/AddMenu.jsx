@@ -31,7 +31,7 @@ const AddMenu = () => {
     console.log("Token:", token);
   } else {
     // Token not found in local storage, solve it according to your needs
-    console.log("Token tidak ditemukan di local storage");
+    console.log("Token not found in local storage");
   }
 
   function previewImage(e) {
@@ -48,7 +48,7 @@ const AddMenu = () => {
     } else {
       dispatch(setSelectedImage(null));
       previewContainerRef.current.innerHTML =
-        "File yang diunggah harus berupa gambar.";
+        "The uploaded file must be an image.";
     }
   }
 
