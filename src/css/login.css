@@ -21,6 +21,14 @@
   border-style: none;
 }
 
+.logo {
+  display: block;
+  margin: 0 auto; /* Center the image */
+  width: 150px; /* Adjust the width as needed */
+  height: 150px; /* Set the height to match the width for a perfect circle */
+  border-radius: 50%; /* Make the image circular */
+  overflow: hidden; /* Ensure the image stays within the circle */
+}
 .custom-text {
   color: var(--secondary-color);
 }

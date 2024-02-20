@@ -72,6 +72,10 @@ const Navbar = () => {
       }`}
       style={{ backgroundColor: navbarColor }} // Set background color dynamically
     >
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
       <div className="containerNav container-fluid mt-3 px-5">
         <div className="burger">
           <button

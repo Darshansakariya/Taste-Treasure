@@ -1,5 +1,3 @@
-// src/store/action/login.jsx
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { loginSuccess, loginFailed } from "../../features/login";
@@ -21,13 +19,20 @@ export const login = createAsyncThunk(
       } else {
         const errorMessage = response.data.data.message;
 
-        if (errorMessage === "Incorrect password") {
+        // Check if the error message indicates incorrect password
+        if (errorMessage.toLowerCase().includes("incorrect password")) {
+          // Dispatch loginFailed with the specific error message
           dispatch(loginFailed(errorMessage));
+        } else {
+          // Dispatch loginFailed with a generic error message
+          dispatch(loginFailed("An error occurred. Please try again later."));
         }
 
         return { error: errorMessage };
       }
     } catch (error) {
+      // Dispatch loginFailed with the error message from the catch block
+      dispatch(loginFailed(error.message));
       return { error: error.message };
     }
   }

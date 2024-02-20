@@ -116,7 +116,7 @@ export default function Home() {
                     Nourishing Sandwich Creations
                   </h2>
                   <hr />
-                  <h5>
+                  <h5 style={{ fontFamily: "Arial, sans-serif" }}>
                     “Quick + Easy Veggie Delight Sandwich -
                     <br />
                     Elevate Your Lunch in Minutes!“
@@ -152,15 +152,17 @@ export default function Home() {
               <div className="slide2 col-6 d-flex align-items-center ms-5">
                 <div className="wrapper">
                   <h2>
-                    Healthy Bone Broth
+                    Fresh &amp; Crunchy
                     <br />
-                    Ramen (Quick &amp; Easy)
+                    Salad Bliss (Healthy &amp; Easy)
                   </h2>
                   <hr />
-                  <h5>
-                    Quick + Easy Chicken Bone Broth Ramen-
-                    <br />
-                    Healthy chicken ramen in a hurry? That’s right!
+                  <h5 style={{ fontFamily: "Arial, sans-serif" }}>
+                    <q style={{ fontFamily: "Arial, sans-serif" }}>
+                      Wholesome Salad Plate to
+                      <br />
+                      Brighten Your Mealtime!
+                    </q>
                   </h5>
                   <button className="learnMore mt-2 border-0 rounded-2">
                     Learn More

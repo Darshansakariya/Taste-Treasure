@@ -4,6 +4,7 @@ import { login } from "./../store/action/login.jsx";
 import "./../css/login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import logo from "../assets/logo.webp";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ export default function Login() {
     <>
       <section className="login" id="login">
         <div className="content d-flex flex-lg-column flex-md-column">
-          <h3 className="pt-5">Recipe...</h3>
+          <img src={logo} className="logo" alt="Logo" />
           <h3 className="pt-3">Let's Get Started!</h3>
           <p className="mb-2">Log in to your existing account</p>
           <hr className="w-60" />

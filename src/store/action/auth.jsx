@@ -5,6 +5,8 @@ import {
   loginFailure,
   setRegistrationData,
   setRegistrationError,
+  axios,
+  setLoading,
 } from "./../../features/auth.jsx";
 
 export const loginUser = (email, password) => async (dispatch) => {
