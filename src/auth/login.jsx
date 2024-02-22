@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { login } from "./../store/action/login.jsx";
 import "./../css/login.css";
@@ -16,14 +17,6 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const termsAndConditionsChecked =
-      document.getElementById("checkTerms").checked;
-
-    if (!termsAndConditionsChecked) {
-      // If not checked, show a pop-up message to the user
-      window.alert("Please agree to the terms & conditions");
-      return;
-    }
     try {
       await dispatch(login(inputData));
       navigate("/home");
@@ -55,7 +48,7 @@ export default function Login() {
       <section className="login" id="login">
         <div className="content d-flex flex-lg-column flex-md-column">
           <img src={logo} className="logo" alt="Logo" />
-          <h3 className="pt-3">Let's Get Started!</h3>
+          <h3 className="pt-3">Let&apos;s Get Started!</h3>
           <p className="mb-2">Log in to your existing account</p>
           <hr className="w-60" />
           <form onSubmit={handleLogin} className="formReg">
@@ -89,20 +82,7 @@ export default function Login() {
                 required
               />
             </div>
-            <div className="form-group form-check my-2">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="checkTerms"
-                required
-              />
-              <label
-                className="form-check-label text-sm-left"
-                htmlFor="checkTerms"
-              >
-                I agree to terms & conditions
-              </label>
-            </div>
+            <div className="text-center mb-3"> </div>
             <button
               type="submit"
               className="buttonLogin btn-warning btn-md w-100 custom-button"
@@ -119,7 +99,7 @@ export default function Login() {
             </span>
           </h6>
           <h6 className="account mt-5 text-center">
-            Don't have an account?
+            Don&apos;t have an account?
             <span>
               <a onClick={handleRegister} className="link">
                 &nbsp;Sign up

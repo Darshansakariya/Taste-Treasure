@@ -40,15 +40,6 @@ export default function Register() {
       return;
     }
 
-    // Check if the terms and conditions checkbox is checked
-    const termsAndConditionsChecked =
-      document.getElementById("checkTerms").checked;
-
-    if (!termsAndConditionsChecked) {
-      window.alert("Please agree to the terms & conditions");
-      return;
-    }
-
     try {
       const registrationData = {
         ...formData,
@@ -127,22 +118,6 @@ export default function Register() {
                 onChange={handleInputChange}
                 required
               />
-            </div>
-            <div className="terms">
-              <div className="form-check my-2">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="checkTerms"
-                  required
-                />
-                <label
-                  className="form-check-label text-sm-left"
-                  htmlFor="checkTerms"
-                >
-                  I agree to terms & conditions
-                </label>
-              </div>
             </div>
             <button
               type="button" // Change type to button
