@@ -14,7 +14,6 @@ import EditMenu from "./pages/EditMenu";
 import SearchMenu from "./pages/SearchMenu";
 import Login from "./auth/login";
 import Register from "./auth/registration";
-import ForgotPassword from "./auth/forgot";
 import Change from "./auth/change";
 import DetailMenu from "./pages/DetailMenu";
 
@@ -31,7 +30,6 @@ function App() {
           <Route path="/search" element={<SearchMenu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/forgot" element={<ForgotPassword />} />
           <Route path="/change" element={<Change />} />
           <Route path="/menu/:id" element={<DetailMenu />} />
           <Route path="UserList" element={<UserList />}></Route>

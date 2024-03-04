@@ -17,16 +17,35 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check if email format is valid
+    if (!emailRegex.test(inputData.email)) {
+      window.alert("Please enter a valid email address.");
+      return; // Prevent further execution
+    }
+
+    // Check if email address contains both username and domain
+    const emailParts = inputData.email.split("@");
+    if (
+      emailParts.length !== 2 ||
+      emailParts[0] === "" ||
+      emailParts[1] === ""
+    ) {
+      window.alert("Please enter the complete email address.");
+      return; // Prevent further execution
+    }
+
     try {
       await dispatch(login(inputData));
       navigate("/home");
     } catch (err) {
       console.log("Oops:", err);
-      // Check if the error message is related to incorrect password
       if (err.message === "Incorrect password") {
         window.alert("Enter correct password");
       } else {
-        // Display an error message to the user on the UI for other errors
         window.alert("An error occurred. Please try again later.");
       }
     }
@@ -36,8 +55,11 @@ export default function Login() {
     navigate("/register");
   };
 
-  const handleForgot = () => {
-    navigate("/forgot");
+  const handleLogout = () => {
+    // Clear user data from local storage
+    localStorage.removeItem("userData");
+    // Redirect to the login page or perform any other necessary actions
+    navigate("/login");
   };
 
   const onChange = (e) => {
@@ -90,14 +112,6 @@ export default function Login() {
               Login
             </button>
           </form>
-          <h6 className="forgotPass mt-3 text-left">
-            Forgot your Password?
-            <span>
-              <a onClick={handleForgot} className="link">
-                &nbsp;Click Here
-              </a>
-            </span>
-          </h6>
           <h6 className="account mt-5 text-center">
             Don&apos;t have an account?
             <span>

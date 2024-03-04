@@ -23,13 +23,15 @@ export default function EditMenu() {
   const editMenu = useSelector((state) => state.editMenu);
 
   const previewContainerRef = useRef();
-  const token = localStorage.getItem("token");
-  if (!token) {
-    console.log("Token not found in localStorage.");
-    return;
-  }
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.log("Token not found in localStorage.");
+      return;
+    }
+
     axios
       .get(`https://kind-gray-hippopotamus-tie.cyclic.app/recipe/id/${id}`, {
         headers: {
@@ -71,6 +73,7 @@ export default function EditMenu() {
       bodyFormData.append("img", imgFile);
     }
 
+    const token = localStorage.getItem("token");
     axios
       .put(
         `https://kind-gray-hippopotamus-tie.cyclic.app/recipe/${id}`,
@@ -108,7 +111,7 @@ export default function EditMenu() {
     } else {
       dispatch(setSelectedImage(null));
       previewContainerRef.current.innerHTML =
-        "File yang diunggah harus berupa gambar.";
+        "The uploaded file must be an image.";
     } // Update the image state
   };
 
@@ -124,6 +127,7 @@ export default function EditMenu() {
       dispatch(updateCategoryId(value));
     }
   };
+
   return (
     <>
       <NavBar />
@@ -137,13 +141,6 @@ export default function EditMenu() {
           <form onSubmit={handleUpdate} className="addFile w-100 rounded">
             <div className="addPhoto bg-light mb-2 mt-5 text-center rounded">
               <div className="upload-area">
-                {/* {editMenu.img && (
-                  <img
-                    src={editMenu.img}
-                    alt="Preview"
-                    style={{ maxWidth: "50%", maxHeight: "300px" }}
-                  />
-                )} */}
                 <div ref={previewContainerRef}></div>
               </div>
               <input

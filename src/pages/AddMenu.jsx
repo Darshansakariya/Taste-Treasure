@@ -125,9 +125,6 @@ const AddMenu = () => {
             </div>
             <div className="upload w-100 mb-2 p-1 text-center">
               <label htmlFor="imageUpload">Add Photo</label>
-              {/* <label className="label-upload mt-2" htmlFor="imageUpload">
-                Add photo
-              </label> */}
             </div>
             <div className="form-group">
               <input
