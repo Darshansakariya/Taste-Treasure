@@ -11,6 +11,8 @@ const profileSlice = createSlice({
       type: "",
       message: "",
     },
+    bookmarkedRecipes: [],
+    likedRecipes: [],
   },
   reducers: {
     setCurrentPage: (state, action) => {
@@ -28,6 +30,12 @@ const profileSlice = createSlice({
     deleteItem: (state, action) => {
       state.data = state.data.filter((item) => item.id !== action.payload);
     },
+    addToBookmarks: (state, action) => {
+      state.bookmarkedRecipes.push(action.payload);
+    },
+    addToLiked: (state, action) => {
+      state.likedRecipes.push(action.payload);
+    },
   },
 });
 
@@ -37,6 +45,8 @@ export const {
   setShowAlert,
   setAlertData,
   deleteItem,
+  addToBookmarks,
+  addToLiked,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

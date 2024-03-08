@@ -43,15 +43,15 @@
 .book img,
 .like img {
   margin-right: 50%; /* Adjust margin for spacing */
-  height: 24px;
+  height: 20px;
   width: 24px;
 }
 
-.booklike .like {
+.bookmark .like {
   background-color: #fff;
   height: 34px;
   width: 34px;
-  border: 1px solid var(--accent-color);
+  /* border: 1px solid var(--accent-color); */
 }
 
 .bar {
@@ -72,7 +72,57 @@
   height: 45px;
   width: 45px;
 }
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+/* Content start */
+.postHeader {
+  margin-top: 8rem;
+}
+
+/* Comment content start */
+.comment-content img {
+  height: 45px;
+  width: 45px;
+}
+
+.review-container1 {
+  padding: 10px; /* Add padding */
+  width: 50%; /* Set width */
+}
+
+.review-container2 {
+  padding: 10px; /* Add padding */
+  width: 30%; /* Set width */
+}
+
+.review-container p {
+  margin-left: 60px; /* Adjust text indentation */
+}
+
+.line {
+  white-space: nowrap;
+}
 /* Comment content end */
+
+.send {
+  background-color: var(--accent-color);
+  border: none;
+  color: #fff; /* Set default text color */
+}
+
+.send:hover {
+  background-color: #efc81a; /* Change background color on hover */
+  border: 1px solid var(--accent-color); /* Change border color on hover */
+  color: var(--accent-color); /* Change text color on hover */
+}
 
 /* Content end */
 

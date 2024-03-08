@@ -110,9 +110,9 @@ const SearchMenu = () => {
       // Filter data based on search keywords
       const filteredData = searchData.filter((item) => {
         return (
-          item.title.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          item.category.toLowerCase().includes(searchKeyword.toLowerCase()) &&
-          item.author.toLowerCase().includes(searchKeyword.toLowerCase()) &&
+          item.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          item.category.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          item.author.toLowerCase().includes(searchKeyword.toLowerCase()) ||
           item.ingredients.some((ingredient) =>
             ingredient.toLowerCase().includes(searchKeyword.toLowerCase())
           )
@@ -211,37 +211,39 @@ const SearchMenu = () => {
         <div className="content-wrapper container-fluid d-flex mb-0">
           <div className="container menu-content-pic d-flex flex-column mt-5 ms-5">
             {(searchResults.length > 0 ? searchResults : getItemsForPage()).map(
-              (item) => {
-                return (
-                  <>
-                    <div className=" content-wrapper row mb-5" key={item.id}>
-                      <div className="content col-lg-4 col-md-5 col-sm-7 mb-5">
-                        <img
-                          id="food-image"
-                          src={item.img}
-                          alt="Food Image"
-                          onClick={() => navigate(`/menu/${item.id}`)} // Using item._id
-                          style={{ cursor: "pointer", borderRadius: 8 }} // Changes the cursor when hovering over an image
-                        />
-                      </div>
-                      <div className="content-title col-lg-8 col-md-7 col-sm-5">
-                        <h5>{item.title}</h5>
-                        <div>
-                          <p className="mb-0">Ingredients:</p>
-                          <p>{item.ingredients}</p>
-                        </div>
-                        <Resp />
-                        <div className="d-flex mt-4 align-items-center">
-                          <div className="round-image">
-                            <img src={item.author_photos} alt="" />
-                          </div>
-                          <h6>{item.author}</h6>
-                        </div>
-                      </div>
+              (item) => (
+                <div className="content-wrapper row mb-5" key={item.id}>
+                  <div className="content col-lg-4 col-md-5 col-sm-7 mb-5">
+                    <img
+                      id="food-image"
+                      src={item.img}
+                      alt="Food Image"
+                      onClick={() =>
+                        navigate(`/menu/${item.id}`, { state: { item } })
+                      }
+                      style={{ cursor: "pointer", borderRadius: 8 }}
+                    />
+                  </div>
+                  <div className="content-title col-lg-8 col-md-7 col-sm-5">
+                    <h5>{item.title}</h5>
+                    <div>
+                      <p className="mb-0">Ingredients:</p>
+                      <p>{item.ingredients}</p>
+                      {/* <ul>
+                        {item.ingredients.map((ingredient, index) => (
+                          <li key={index}>{ingredient}</li>
+                        ))}
+                      </ul> */}
                     </div>
-                  </>
-                );
-              }
+                    <div className="d-flex mt-4 align-items-center">
+                      <div className="round-image">
+                        <img src={item.author_photos} alt="" />
+                      </div>
+                      <h6>{item.author}</h6>
+                    </div>
+                  </div>
+                </div>
+              )
             )}
           </div>
         </div>
