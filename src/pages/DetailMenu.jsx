@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 // DetailMenu.jsx
-
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +9,7 @@ import comment from "../assets/loggedin_user.png";
 import bookmark from "../assets/bookmark.svg";
 import like from "../assets/like.svg";
 import axios from "axios";
+import "../css/DetailMenu.css";
 import { addToBookmarks, addToLiked } from "../features/profile";
 
 export default function DetailMenu() {
