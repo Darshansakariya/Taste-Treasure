@@ -38,6 +38,12 @@ export default function Login() {
       return; // Prevent further execution
     }
 
+    // Check password length
+    if (inputData.pass.length < 6) {
+      window.alert("Password must be at least 6 characters long and correct.");
+      return; // Prevent further execution
+    }
+
     try {
       await dispatch(login(inputData));
       navigate("/home");

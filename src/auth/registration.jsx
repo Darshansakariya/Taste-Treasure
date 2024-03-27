@@ -12,15 +12,12 @@ export default function Register() {
     email: "",
     pass: "",
   });
-  const [passwordError, setPasswordError] = useState("");
 
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   };
-  const validatePassword = (password) => {
-    return password.length >= 6;
-  };
+
   const handleRegister = async () => {
     // Check if the name is provided
     if (!formData.name.trim()) {
@@ -35,8 +32,8 @@ export default function Register() {
     }
 
     // Check if the password is provided and meets the requirements
-    if (!formData.pass.trim() || !validatePassword(formData.pass)) {
-      setPasswordError("Password must be at least 6 characters long");
+    if (!formData.pass.trim() || formData.pass.length < 6) {
+      window.alert("Password must be at least 6 characters long");
       return;
     }
 
@@ -73,7 +70,7 @@ export default function Register() {
       <section className="regis">
         <div className="content d-flex flex-column">
           <img src={logo} className="logo" alt="Logo" />
-          <h3 className="mt-3">Lets Get you set up !</h3>
+          <h3 className="mt-3">Let's Get you set up!</h3>
           <p className="mb-2">Create a new account to access all features</p>
           <hr className="w-60" />
           <div className="formReg">
@@ -120,10 +117,8 @@ export default function Register() {
               />
             </div>
             <button
-              type="button" // Change type to button
+              type="button"
               className="buttonRegis btn btn-md btn-warning w-100 custom-button text-white"
-              data-toggle="modal"
-              data-target="#verifyModal"
               onClick={handleRegister}
             >
               Register Account

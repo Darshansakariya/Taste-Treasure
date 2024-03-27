@@ -16,6 +16,7 @@ import recipe8image from "./../assets/recipe pic 8.png";
 import recipe9image from "./../assets/recipe pic 9.png";
 import recipe10image from "./../assets/recipe pic 10.png";
 import recipe11image from "./../assets/recipe pic 11.png";
+import { Link } from "react-router-dom";
 import NavBar from "./../components/Navbar";
 // import SideBlock from "./../components/SideBlock";
 import Footer from "./../components/Footer";
@@ -27,14 +28,6 @@ export default function Home() {
   const handleDiscoverInput = (event) => {
     const searchQuery = event.target.value.trim();
     dispatch(setDiscoverInput(searchQuery));
-  };
-  const handleSearchButtonClick = () => {
-    const searchQuery = discoverInput.trim();
-
-    if (searchQuery) {
-      // Redirect to the SearchMenu page with the search query
-      history.push(`/SearchMenu?query=${encodeURIComponent(searchQuery)}`);
-    }
   };
   return (
     <>
@@ -54,22 +47,6 @@ export default function Home() {
                     Discover Recipe <br />& Delicious Food
                   </h1>
                 </section>
-                <div className="search-container">
-                  <input
-                    type="text"
-                    className="search rounded-3 border-0"
-                    placeholder="Search Recipe, Food, Ingredient"
-                    value={discoverInput}
-                    onChange={handleDiscoverInput}
-                    style={{ fontFamily: "Arial, sans-serif" }}
-                  />
-                  <button
-                    className="search-button border-0"
-                    onClick={handleSearchButtonClick}
-                  >
-                    Search
-                  </button>
-                </div>
               </div>
               <div className="slide2 col-md-5">
                 <img className="rounded-4" src={discoverImage} alt="discover" />
@@ -122,7 +99,14 @@ export default function Home() {
                     Elevate Your Lunch in Minutes!“
                   </h5>
                   <button className="learnMore mt-2 border-0 rounded-2">
-                    Learn More
+                    <a
+                      href="https://youtu.be/BlzJzavriHw?si=gEnwrWyMcyVUQ2jl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-decoration-none text-white"
+                    >
+                      Learn More
+                    </a>
                   </button>
                 </div>
               </div>
@@ -165,7 +149,14 @@ export default function Home() {
                     </q>
                   </h5>
                   <button className="learnMore mt-2 border-0 rounded-2">
-                    Learn More
+                    <a
+                      href="https://youtu.be/BlzJzavriHw?si=gEnwrWyMcyVUQ2jl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-decoration-none text-white"
+                    >
+                      Learn More
+                    </a>
                   </button>
                 </div>
               </div>
@@ -189,7 +180,9 @@ export default function Home() {
               <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe1 rounded-3">
                   <img src={recipe4image} alt="Salad" width="200" />
-                  <div className="salad"> Salads </div>
+                  <div className="salad">
+                    <Link to="/salad"> Salads </Link>
+                  </div>
                 </div>
               </div>
               <div className="col-3 mt-5 d-flex justify-content-center">

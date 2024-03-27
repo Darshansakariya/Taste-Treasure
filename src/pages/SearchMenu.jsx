@@ -19,6 +19,8 @@ const SearchMenu = () => {
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [totalPages, setTotalPages] = useState(0);
   const token = localStorage.getItem("token");
+  const [isNewClicked, setIsNewClicked] = useState(false); // Track if the "New" button is clicked
+
   // Make sure the token exists before using it
   if (token) {
     // Do what you need with the token
@@ -103,7 +105,6 @@ const SearchMenu = () => {
           },
         }
       );
-      console.log(response);
 
       const searchData = response.data.data;
 
@@ -134,7 +135,19 @@ const SearchMenu = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
+  const handleNewClick = () => {
+    if (!isNewClicked) {
+      console.log("Setting search results to first three recipes.");
+      const filteredData = data.slice(0, 3);
+      setSearchResults(filteredData);
+      setCurrentPage(1); // Reset current page to 1 when applying new filter
+      setIsNewClicked(true);
+    } else {
+      console.log("Resetting search results.");
+      setSearchResults([]); // Reset search results
+      setIsNewClicked(false);
+    }
+  };
   const getItemsForPage = () => {
     const startIndex = currentPage - 1;
     const endIndex = startIndex + itemsPerPage;
@@ -179,29 +192,9 @@ const SearchMenu = () => {
                 id="srcNew"
                 href="#"
                 className="srcNew btn col-1 d-flex align-items-center justify-content-center"
+                onClick={handleNewClick} // Add onClick event handler
               >
-                New
-              </button>
-              <button
-                id="srcPopular"
-                href="#"
-                className="srcPopular btn ms-3 col-1 d-flex align-items-center justify-content-center"
-              >
-                Popular
-              </button>
-              <button
-                id="srcVegetarian"
-                href="#"
-                className="srcVegetarian btn ms-3 col-1 d-flex align-items-center justify-content-center"
-              >
-                Vegetarian
-              </button>
-              <button
-                id="srcBreakfast"
-                href="#"
-                className="srcBreakfast btn ms-3 col-1 d-flex align-items-center justify-content-center"
-              >
-                Breakfast
+                New Recipes
               </button>
             </div>
           </div>
