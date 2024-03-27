@@ -114,7 +114,7 @@ export default function DetailMenu() {
         <section className="comment-content d-flex flex-column container-fluid pl-5">
           {/* Render ingredients */}
           <div className="content mb-4 align-items-center">
-            <h3>Ingredients:</h3>
+            <h3>Ingredients and Recipe:</h3>
             <br />
             <p>{menuData.ingredients}</p>
           </div>

@@ -35,7 +35,7 @@ export default function Profile() {
       const tokenData = JSON.parse(atob(token.split(".")[1]));
       const userId = tokenData.id;
 
-      const url = `https://kind-gray-hippopotamus-tie.cyclic.app/recipe/users/${userId}`;
+      const url = `/api/recipe/${userId}`;
 
       const response = await axios.get(url, {
         headers: {
@@ -49,32 +49,58 @@ export default function Profile() {
     }
   };
 
-  useEffect(() => {
-    fetchProfileData();
-  }, []);
-
-  const handleDelete = (id) => {
+  const fetchMenuItems = async () => {
     const token = localStorage.getItem("token");
 
     if (!token) {
       console.log("Token not found in localStorage.");
       return;
     }
-    axios
-      .delete(`https://kind-gray-hippopotamus-tie.cyclic.app/recipe/${id}`, {
+
+    try {
+      const response = await axios.get("/api/recipe");
+
+      dispatch(setData(response.data));
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfileData();
+    fetchMenuItems();
+  }, []);
+
+  const handleDelete = async (id) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.log("Token not found in localStorage.");
+      return;
+    }
+
+    try {
+      // Convert the id to string if necessary
+      const recipeId = typeof id === "string" ? id : String(id);
+
+      const response = await axios.delete(`/api/recipe/${recipeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then(() => {
-        dispatch(deleteItem(id));
-        toast.success("Menu deleted successfully");
-        setShowModal(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Delete Menu Failed");
       });
+
+      if (response.status === 200) {
+        dispatch(deleteItem(recipeId));
+        toast.success("Recipe deleted successfully");
+        setShowModal(false);
+      } else {
+        toast.error("Delete Recipe Failed");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Delete Recipe Failed");
+    }
   };
 
   const handleNextPage = () => {
@@ -83,6 +109,16 @@ export default function Profile() {
 
   const handlePrevPage = () => {
     dispatch(setCurrentPage(currentPage - 1));
+  };
+
+  const getBlobUrl = (data, contentType) => {
+    const base64String = btoa(
+      new Uint8Array(data).reduce(
+        (data, byte) => data + String.fromCharCode(byte),
+        ""
+      )
+    );
+    return `data:${contentType};base64,${base64String}`;
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -175,84 +211,89 @@ export default function Profile() {
             aria-labelledby="recipes-tab"
           >
             <div className="container-fluid row">
-              {itemsToShow.map((item) => {
-                return (
-                  <>
-                    <div className="content-wrapper row" key={item.id}>
-                      <div className="content col-lg-4 col-md-5 col-sm-7 mb-5">
-                        <img
-                          style={{
-                            borderRadius: 10,
-                          }}
-                          src={item.img}
-                          alt="Food Image"
-                          width={300}
-                          height={200}
-                        />
+              {itemsToShow.map((recipe) => (
+                <div className="content-wrapper row" key={recipe.id}>
+                  <div className="content col-lg-4 col-md-5 col-sm-7 mb-5">
+                    {recipe.img && (
+                      <img
+                        style={{
+                          borderRadius: 10,
+                        }}
+                        src={getBlobUrl(
+                          recipe.img.data,
+                          recipe.img.contentType
+                        )}
+                        alt={recipe.title}
+                        width={300}
+                        height={200}
+                      />
+                    )}
+                  </div>
+                  <div className="content-title col-lg-8 col-md-7 col-sm-5">
+                    <h5>{recipe.title}</h5>
+                    <div>
+                      <p className="mb-0">Ingredients an Recipe:</p>
+                      <p>{recipe.ingredients}</p>
+                    </div>
+                    {/* You can remove or modify the Resp component according to your requirements */}
+                    <Resp />
+                    <div className="utility d-flex gap-5">
+                      <div className="actions mt-4">
+                        <Link
+                          to={`/editMenu/${recipe.id}`}
+                          className="btn-edit btn pt-2"
+                        >
+                          Edit Recipe
+                        </Link>
                       </div>
-                      <div className="content-title col-lg-8 col-md-7 col-sm-5">
-                        <h5>{item.title}</h5>
-                        <div>
-                          <p className="mb-0">Ingredients:</p>
-                          <p>{item.ingredients}</p>
-                        </div>
-                        <Resp />
-                        <div className="utility d-flex gap-5">
-                          <div className="actions mt-4">
-                            <Link
-                              to={`/editMenu/${item.id}`}
-                              className="btn-edit btn pt-2"
-                            >
-                              Edit Menu
-                            </Link>
-                          </div>
-                          <div className="actions mt-4 ps-2">
+                      <div className="actions mt-4 ps-2">
+                        <button
+                          className="btn-delete btn text-center pt-2"
+                          onClick={() => setShowModal(true)}
+                        >
+                          Delete Recipe
+                        </button>
+                        <Modal show={showModal} centered onHide={handleClose}>
+                          <Modal.Body>
+                            Are you sure you want to delete this recipe?
+                          </Modal.Body>
+                          <Modal.Footer>
                             <button
-                              className="btn-delete btn text-center pt-2 "
-                              onClick={() => setShowModal(true)}
+                              style={{
+                                backgroundColor: "white",
+                                border: 1,
+                                borderColor: "#efc81a",
+                                borderRadius: 5,
+                                width: 80,
+                                height: 35,
+                                color: "#efc81a",
+                              }}
+                              onClick={handleClose}
                             >
-                              Delete Menu
+                              Cancel
                             </button>
-                            <Modal show={showModal} centered>
-                              <Modal.Body>
-                                Are you sure want to delete this recipe ?
-                              </Modal.Body>
-                              <Modal.Footer>
-                                <button
-                                  style={{
-                                    backgroundColor: "white",
-                                    border: 1,
-                                    borderColor: "#efc81a",
-                                    borderRadius: 5,
-                                    width: 80,
-                                    height: 35,
-                                    color: "#efc81a",
-                                  }}
-                                  onClick={handleClose}
-                                >
-                                  Cancel
-                                </button>
-                                <button
-                                  style={{
-                                    backgroundColor: "#e33c30",
-                                    border: "none",
-                                    borderRadius: 5,
-                                    width: 80,
-                                    height: 35,
-                                  }}
-                                  onClick={() => handleDelete(item.id)}
-                                >
-                                  Delete
-                                </button>
-                              </Modal.Footer>
-                            </Modal>
-                          </div>
-                        </div>
+                            <button
+                              style={{
+                                backgroundColor: "#e33c30",
+                                border: "none",
+                                borderRadius: 5,
+                                width: 80,
+                                height: 35,
+                              }}
+                              onClick={() => {
+                                handleDelete(recipe._id);
+                                handleClose();
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </Modal.Footer>
+                        </Modal>
                       </div>
                     </div>
-                  </>
-                );
-              })}
+                  </div>
+                </div>
+              ))}
               <div className="pagination container-fluid mt-5 d-flex justify-content-center align-items-center">
                 <div className="page-content d-flex align-items-baseline gap-2">
                   {currentPage > 1 && (

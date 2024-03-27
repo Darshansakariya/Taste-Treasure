@@ -25,14 +25,6 @@ const AddMenu = () => {
   const previewContainerRef = useRef();
 
   const token = localStorage.getItem("token");
-  // Make sure the token exists before using it
-  if (token) {
-    // Do what you need with the token
-    console.log("Token:", token);
-  } else {
-    // Token not found in local storage, solve it according to your needs
-    console.log("Token not found in local storage");
-  }
 
   function previewImage(e) {
     const file = e.target.files[0];
@@ -79,7 +71,7 @@ const AddMenu = () => {
 
     try {
       const response = await axios.post(
-        "https://kind-gray-hippopotamus-tie.cyclic.app/recipe",
+        "http://localhost:5000/api/recipe", // Change the endpoint URL here
         bodyFormData,
         {
           headers: {
@@ -89,6 +81,7 @@ const AddMenu = () => {
         }
       );
       console.log(response);
+      console.log("Add Menu Successful");
       toast.success("Add Menu Successful");
       dispatch(resetInput());
       setImgFile(null);
@@ -140,7 +133,7 @@ const AddMenu = () => {
               <div className="form-floating">
                 <textarea
                   className="w-100 rounded-2 ps-3 pt-3 ms-0"
-                  placeholder="Ingredients"
+                  placeholder="Ingredients and Recipe"
                   name="ingredients"
                   style={{ height: "150px" }}
                   value={input.ingredients}
@@ -158,9 +151,10 @@ const AddMenu = () => {
                 onChange={onChange}
               >
                 <option value="0">Category</option>
-                <option value="1">Appetizer</option>
-                <option value="2">Main Course</option>
-                <option value="3">Dessert</option>
+                <option value="1">Salad</option>
+                <option value="2">Starter</option>
+                <option value="3">Main Course</option>
+                <option value="4">Dessert</option>
               </select>
             </div>
             <div className="buttonPost mt-3 mb-5 d-flex justify-content-center align-items-center">

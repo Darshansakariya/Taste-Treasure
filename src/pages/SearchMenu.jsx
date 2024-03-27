@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./../css/SearchMenu.css";
 import NavBar from "./../components/Navbar";
 import Footer from "./../components/Footer";
-import Resp from "./../components/Resp";
+// import Resp from "./../components/Resp";
 import axios from "axios";
 
 const SearchMenu = () => {
@@ -227,7 +227,7 @@ const SearchMenu = () => {
                   <div className="content-title col-lg-8 col-md-7 col-sm-5">
                     <h5>{item.title}</h5>
                     <div>
-                      <p className="mb-0">Ingredients:</p>
+                      <p className="mb-0">Ingredients and Recipe:</p>
                       <p>{item.ingredients}</p>
                       {/* <ul>
                         {item.ingredients.map((ingredient, index) => (

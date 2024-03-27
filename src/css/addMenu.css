@@ -5,7 +5,7 @@
 .custom-button,
 .custom-button2,
 .modal-body .cancelLogout {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   background-color: #efc81a;
   color: #fff;
   border: none;
@@ -40,12 +40,31 @@
   /* padding-top: 25%; */
 }
 
+.addPhoto {
+  position: relative;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  overflow: hidden; /* Ensure images don't overflow */
+}
+
+.addPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Change from 'cover' to 'contain' */
+}
+
 .upload {
   background-color: #efc81a;
   border-radius: 5px;
   color: #fff;
-  border: none
+  border: none;
+  padding: 8px 15px; /* Add padding */
+  cursor: pointer;
+  display: block; /* Make it block level */
+  margin-bottom: 10px; /* Add margin bottom to separate from other fields */
 }
+
 .upload:hover {
   background-color: #fff;
   border-radius: 5px;
@@ -53,6 +72,70 @@
   border: 1px solid #efc81a;
 }
 
+/* Adjust the preview container */
+.upload-area {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  border: 1px dashed #ccc; /* Add dashed border for visual indication */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Add margin bottom to separate from other fields */
+}
+
+/* Ensure the image stays within the container */
+.preview-container {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.preview-container img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensure image fits container while maintaining aspect ratio */
+}
+
+/* Add padding to the form container to separate it from the image */
+.addFile {
+  padding-top: 10px;
+}
+
+/* Adjust the upload button style */
+.upload input[type="file"] {
+  display: none; /* Hide the default file input */
+}
+
+.upload label {
+  background-color: #efc81a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.upload label:hover {
+  background-color: #fff;
+  color: #efc81a;
+  border: 1px solid #efc81a;
+}
+
+/* Adjust input file style */
+.upload-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
 
 .addPhoto,
 .addPhoto input,
