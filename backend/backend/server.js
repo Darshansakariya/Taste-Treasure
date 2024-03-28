@@ -3,7 +3,8 @@ import multer from "multer";
 import cors from "cors";
 // import axios from "axios";
 // import FormData from "form-data";
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
+import { ObjectId } from "mongodb";
 
 const app = express();
 const port = 5000;
@@ -80,7 +81,11 @@ app.get("/api/recipe", async (req, res) => {
 // Define route for deleting a recipe
 app.delete("/api/recipe/:id", async (req, res) => {
   try {
+    // Connect to the MongoDB server
+    await client.connect();
+
     const { id } = req.params;
+    console.log("ID:", id); // Add this line to log the value of id
 
     // Validate if the provided ID is a valid ObjectId
     if (!ObjectId.isValid(id)) {
@@ -107,9 +112,12 @@ app.delete("/api/recipe/:id", async (req, res) => {
   }
 });
 
-// Define route for updating a recipe
+// Define the route for updating a recipe
 app.put("/api/recipe/:id", upload.single("img"), async (req, res) => {
   try {
+    // Connect to the MongoDB server
+    await client.connect();
+
     const { id } = req.params;
 
     // Validate if the provided ID is a valid ObjectId
@@ -117,7 +125,7 @@ app.put("/api/recipe/:id", upload.single("img"), async (req, res) => {
       return res.status(400).send("Invalid recipe ID");
     }
 
-    // Connect to the database
+    // Access the database and collection
     const database = client.db("tastetresure");
     const collection = database.collection("Menu Items");
 
@@ -134,6 +142,14 @@ app.put("/api/recipe/:id", upload.single("img"), async (req, res) => {
       ingredients: req.body.ingredients || existingRecipe.ingredients,
       category_id: req.body.category_id || existingRecipe.category_id,
     };
+
+    // Check if there's a new image uploaded
+    if (req.file) {
+      updatedRecipe.img = {
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+      };
+    }
 
     // Update the recipe data
     await collection.updateOne({ _id: ObjectId(id) }, { $set: updatedRecipe });

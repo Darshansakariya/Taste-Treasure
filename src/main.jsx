@@ -29,6 +29,7 @@ import Register from "./auth/registration";
 import Change from "./auth/change";
 import DetailMenu from "./pages/DetailMenu";
 import SaladPage from "./pages/SaladPage";
+import AppetizerPage from "./pages/Appetizerpage";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -63,8 +64,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/change" element={<Change />} />
           <Route path="/menu/:id" element={<DetailMenu />} />
           <Route path="/salad" element={<SaladPage />} />
+          <Route path="/appetizer" element={<AppetizerPage />} />
           <Route path="UserList" element={<UserList />} />
-          {/* <Route path="/salad" element={<SaladPage />} /> */}
         </Routes>
       </Router>
       <ToastContainer />

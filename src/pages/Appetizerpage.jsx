@@ -1,15 +1,15 @@
-// SaladPage.jsx
+// AppetizerPage.jsx
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import saladimage from "./../assets/recipe pic 4.png";
+import appimage from "./../assets/recipe pic 5.png";
 import comment from "../assets/loggedin_user.png";
 import "../css/DetailMenu.css";
 import { useSelector } from "react-redux";
 // import axios from "axios";
 
-const SaladPage = () => {
+const AppetizerPage = () => {
   const user = useSelector((state) => state.login.user);
 
   return (
@@ -38,11 +38,11 @@ const SaladPage = () => {
       {/* Content section */}
       <section className="content container-fluid d-flex justify-content-center align-items-center flex-column">
         <div className="content-container mt-2">
-          <h1 className="">Salad</h1>
+          <h1 className="">Appetizer</h1>
         </div>
         <div className="thumbnail d-flex justify-content-center mt-2">
           <img
-            src={saladimage}
+            src={appimage}
             className="w-50 h-25 d rounded"
             alt="image-menu"
           />
@@ -58,25 +58,25 @@ const SaladPage = () => {
             <br />
             <h4>Ingredients:</h4>
             <ul>
-              <li>Mixed greens</li>
-              <li>Cherry tomatoes</li>
-              <li>Cucumber</li>
-              <li>Avocado</li>
-              <li>Balsamic vinaigrette dressing</li>
+              <li>8 bread slices</li>
+              <li>4 oz butter for bread slices</li>
+              <li>1 tbsp butter or oil</li>
+              <li>½ tsp garlic or minced</li>
+              <li>½ cup chopped onions or green chilling red</li>
             </ul>
             <br />
             <h4>Recipe</h4>
-            <ol>
-              <li>Wash and chop the vegetables.</li>
-              <li>Combine them in a bowl.</li>
-              <li>Drizzle with balsamic vinaigrette dressing.</li>
-              <li>Toss gently to coat.</li>
-              <li>Serve and enjoy your simple and healthy salad!</li>
-            </ol>
+            <p>
+              Spread butter on one side of each bread slice. Some minced garlic
+              and chopped onions in butter or oil. Place buttered side down on a
+              heated skillet, add fillings of choice, top with another bread
+              slice, cook until golden brown, flip, and cook the other side
+              until golden brown.
+            </p>
             <br />
             <h4>Online video:</h4>
             <a
-              href="https://www.youtube.com/watch?v=ptub0dCVK9k"
+              href="https://youtu.be/WZW_iUjykBQ?si=_OBGf-nvDJTJY_Ub"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -123,4 +123,4 @@ const SaladPage = () => {
   );
 };
 
-export default SaladPage;
+export default AppetizerPage;

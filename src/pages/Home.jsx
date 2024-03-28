@@ -188,7 +188,9 @@ export default function Home() {
               <div className="col-3 mt-5 d-flex justify-content-center">
                 <div className="recipe2 rounded-3">
                   <img src={recipe5image} alt="Appetizer" width="200" />
-                  <div className="appetizer"> Appetizer </div>
+                  <div className="appetizer">
+                    <Link to="/appetizer"> Appetizer </Link>
+                  </div>
                 </div>
               </div>
               <div className="col-3 mt-5 d-flex justify-content-center">
