@@ -10,6 +10,9 @@ const app = express();
 const port = 5000;
 app.use(cors());
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+
 // Multer configuration for handling file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -19,6 +22,65 @@ const uri = "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
 app.use(express.json());
+
+// Define a route to register a new user
+app.post("/api/register", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    // Connect to MongoDB
+    await client.connect();
+
+    // Access your database and collection
+    const database = client.db("tastetresure");
+    const collection = database.collection("User");
+
+    // Insert the new user into the database
+    await collection.insertOne({ name, email, password });
+
+    // Close the connection to the MongoDB server
+    await client.close();
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Route to handle user login
+app.post("/api/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Connect to MongoDB
+    await client.connect();
+
+    // Access the database and collection
+    const database = client.db("tastetresure");
+    const collection = database.collection("User");
+
+    // Find the user by email
+    const user = await collection.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ message: "Email not found" });
+    }
+
+    // Compare the provided password with the hashed password in the database
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ message: "Incorrect password" });
+    }
+
+    res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  } finally {
+    // Close the MongoDB connection
+    await client.close();
+  }
+});
 
 app.post("/api/recipe", upload.single("img"), async (req, res) => {
   try {
